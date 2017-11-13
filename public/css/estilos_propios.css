@@ -5,7 +5,7 @@ a:hover{
 .margin-abajo
 {
     width: 100%;
-    bottom: 0;
+    bottom: 10;
     position: absolute;
     height: auto;
 }
@@ -182,6 +182,10 @@ a:hover{
 	background-color: #392E2E;
 	color: #fff;
 	border-radius: 30px;
+}
+.badge_personal_2{
+	background-color: #FDFBFB;
+	color: #ccc;
 }
 .border_total{
 	border: 1px solid #ECECEC;

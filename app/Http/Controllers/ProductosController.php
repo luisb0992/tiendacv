@@ -7,6 +7,7 @@ use App\Http\Requests\CreateProductoRequest;
 use App\Http\Requests\EditProductoRequest;
 use App\Producto;
 use App\Categoria;
+use App\Comentario;
 
 class ProductosController extends Controller
 {
@@ -98,7 +99,9 @@ class ProductosController extends Controller
         $producto = Producto::find($id);
 
         return view('productos.show',[
-            'producto' => $producto
+            'producto' => $producto,
+            'count_coment' => Comentario::countComentarios($id),
+            'comentarios' => Comentario::allComentarios($id)
         ]);
     }
 

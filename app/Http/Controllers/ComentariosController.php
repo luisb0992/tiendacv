@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comentario;
 
 class ComentariosController extends Controller
 {
@@ -34,7 +35,15 @@ class ComentariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $comentario = new Comentario();
+            $comentario->descripcion = $request->descripcion;
+            $comentario->producto_id = $request->producto_id;
+            $comentario->user_id = \Auth::user()->id;
+            $comentario->save();
+
+            return response()->json($comentario);
+        }
     }
 
     /**

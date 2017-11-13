@@ -116,9 +116,8 @@
         </nav>
 
         @yield('content')
-        @include('layouts.footer')
     </div>
-
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>

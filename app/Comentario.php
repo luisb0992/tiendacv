@@ -17,4 +17,19 @@ class Comentario extends Model
     public function producto(){
     	return $this->belongsTo("App\Producto", "producto_id");	
     }
+
+    // contar comentarios de cada producto
+    public static function countComentarios($id){
+    	return Comentario::where("producto_id", $id)->count();
+    }
+
+    // total comentarios 
+    public static function allComentarios($id){
+    	$count = Comentario::where("producto_id", $id)->count();
+    	if ($count == 1) {
+    		return Comentario::where("producto_id", $id)->first();
+    	}else{
+    		return Comentario::where("producto_id", $id)->get();
+    	}
+    }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sinfooter')
 @section('content')
 @if($producto)
 	<div class="jumbotron jumbotron-purple">
@@ -41,13 +41,31 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="container white">
 		<h2 class="body_personal">Descripcion</h2>
 		<hr>
 		<p class="text-justify">{{ $producto->descripcion }}</p>
 		<hr>
-		<h2 class="body_personal">Comentarios</h2>
-		<p>...</p>
+		<h2 class="body_personal"><strong class="badge_personal_2">{{ $count_coment }}</strong> @if($count_coment == 1) Comentario @else Comentarios @endif 
+			<small>
+				<a href="#comentario" class="btn btn-link text-primary" data-toggle="modal" data-target="#comentario" role="button">
+					<i class="fa fa-plus-square"></i> Nuevo
+				</a>
+			</small>
+		</h2>
+		<div class="alert alert-success" id="mensaje-done" style="display: none;">
+		    <button type="button" class="close" data-dismiss="alert">&times;</button>
+		    <p><i class="fa fa-check"></i> Comentario creado, espere unos segundos para visualizar...</p>
+		</div>
+		@if($count_coment == 1)
+			<p>{{ $comentarios->descripcion }}</p>
+		@else	
+			@foreach($comentarios as $coment)
+				<p>{{ $coment->descripcion }}</p>
+			@endforeach
+		@endif
+		@include('comentarios.modal_comentario')
 	</div>
 	
 	<div class="container jumbotron-gris-medio">
@@ -70,4 +88,49 @@
 		</div>
 	</div>
 @endif
+@endsection
+
+@section('script')
+<script>
+
+	$(document).ready(function() {
+		// funcion para recargar
+		function reload_pag(){
+	    	location.reload();
+	    }
+
+	    // click en el boton
+		$("#btn_coment").click(function(e) {
+			e.preventDefault();
+			var btn = $("#btn_coment");
+			var icon = $("#icon_fa");
+			var comentario = $("#coment").val();
+			var producto_id = $("#producto_id").val();
+			var token = $("#token").val();
+			icon.addClass('fa fa-spinner fa-pulse fa-fw');
+			btn.text('Espere...');
+
+			// metodo ajax
+			$.ajax({
+				headers: {'X-CSRF-TOKEN': token},
+				url: '../comentarios',
+				type: 'POST',
+				dataType: 'JSON',
+				data: {descripcion: comentario, producto_id: producto_id},
+			})
+			.done(function(data) {
+				$("#comentario").toggle('hide');
+			    $("#mensaje-done").fadeIn(1000,'linear');
+			    setTimeout(reload_pag, 5000);
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
+	});
+</script>
 @endsection

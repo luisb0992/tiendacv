@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sinfooter')
 @section('content')
 	<div class="container white">
 		<h1 class="text-capitalize text-center">Tu Carrito de Compras</h1>
