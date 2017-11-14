@@ -35,6 +35,10 @@ class ComentariosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'descripcion' =>'required|string'
+        ]);
+
         if ($request->ajax()) {
             $comentario = new Comentario();
             $comentario->descripcion = $request->descripcion;

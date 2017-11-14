@@ -120,8 +120,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
     <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
     @yield('script')
 </body>

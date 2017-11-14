@@ -47,25 +47,36 @@
 		<hr>
 		<p class="text-justify">{{ $producto->descripcion }}</p>
 		<hr>
-		<h2 class="body_personal"><strong class="badge_personal_2">{{ $count_coment }}</strong> @if($count_coment == 1) Comentario @else Comentarios @endif 
+		@include('partials.msj_ajax')
+		<h2 class="body_personal">
+			<strong class="badge_personal_2">{{ $count_coment }}</strong> 
+			<span class="text-morado">@if($count_coment == 1) Comentario @else Comentarios @endif</span> 
 			<small>
 				<a href="#comentario" class="btn btn-link text-primary" data-toggle="modal" data-target="#comentario" role="button">
 					<i class="fa fa-plus-square"></i> Nuevo
 				</a>
 			</small>
+			<span id="reload" style="display: none;" align="right" class="text-right">
+				<i class="fa fa-spinner fa-pulse fa-fw text-success"></i>
+			</span> 
 		</h2>
-		<div class="alert alert-success" id="mensaje-done" style="display: none;">
-		    <button type="button" class="close" data-dismiss="alert">&times;</button>
-		    <p><i class="fa fa-check"></i> Comentario creado, espere unos segundos para visualizar...</p>
-		</div>
-		@if($count_coment == 1)
-			<p>{{ $comentarios->descripcion }}</p>
-		@else	
-			@foreach($comentarios as $coment)
-				<p>{{ $coment->descripcion }}</p>
-			@endforeach
-		@endif
-		@include('comentarios.modal_comentario')
+		<div class="list-group">
+				@if($count_coment == 1)
+					<a class="list-group-item">
+						<h4 class="list-group-item-heading">{{ $comentarios->users->name.' '.$comentarios->users->ape }}</h4>
+						<p class="list-group-item-text">{{ $comentarios->descripcion }}</p>
+					</a>
+					<br>
+				@else	
+					@foreach($comentarios as $coment)
+						<a class="list-group-item">
+							<h4 class="list-group-item-heading">{{ $coment->users->name.' '.$coment->users->ape }}</h4>
+							<p class="list-group-item-text">{{ $coment->descripcion }}</p>
+						</a>
+						<br>
+					@endforeach
+				@endif
+		</div>	
 	</div>
 	
 	<div class="container jumbotron-gris-medio">
@@ -78,6 +89,7 @@
 		<p>{{ $producto->user->tienda->sub_titulo }}</p>
 		<br><br><br>
 	</div>
+	@include('comentarios.modal_comentario')
 @else
 	<div class="jumbotron jumbotron-purple">
 		<div class="container">
@@ -103,11 +115,11 @@
 		$("#btn_coment").click(function(e) {
 			e.preventDefault();
 			var btn = $("#btn_coment");
-			var icon = $("#icon_fa");
+			var icon = $(".icon_fa");
 			var comentario = $("#coment").val();
 			var producto_id = $("#producto_id").val();
 			var token = $("#token").val();
-			icon.addClass('fa fa-spinner fa-pulse fa-fw');
+			icon.addClass("fa fa-spinner fa-pulse fa-fw");
 			btn.text('Espere...');
 
 			// metodo ajax
@@ -119,12 +131,22 @@
 				data: {descripcion: comentario, producto_id: producto_id},
 			})
 			.done(function(data) {
-				$("#comentario").toggle('hide');
+				// console.log(data);
+				$("#comentario").modal('toggle');
 			    $("#mensaje-done").fadeIn(1000,'linear');
+			    $("#done_done").text("Creado! Espere unos segundos para mostrar su comentario....");
+			    $("#reload").fadeIn('slow/400/fast');
+			    icon.removeClass("fa fa-spinner fa-pulse fa-fw");
+				btn.text('Enviar');
 			    setTimeout(reload_pag, 5000);
 			})
-			.fail(function() {
-				console.log("error");
+			.fail(function(error) {
+				// console.log(error);
+				// $("#comentario").modal('toggle');
+			    $("#modal-fail").fadeIn(800,'linear');
+			    $("#modal_fail_fail").text(error.responseJSON.descripcion[0]);
+			    icon.removeClass("fa fa-spinner fa-pulse fa-fw");
+				btn.text('Enviar');
 			})
 			.always(function() {
 				console.log("complete");
