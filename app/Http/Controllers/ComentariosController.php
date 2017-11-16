@@ -36,7 +36,8 @@ class ComentariosController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'descripcion' =>'required|string'
+            'descripcion' =>'required|string',
+            'calif' =>'required|numeric'
         ]);
 
         if ($request->ajax()) {
@@ -44,7 +45,13 @@ class ComentariosController extends Controller
             $comentario->descripcion = $request->descripcion;
             $comentario->producto_id = $request->producto_id;
             $comentario->user_id = \Auth::user()->id;
-            $comentario->save();
+            
+            if ($comentario->save()) {
+                $caiificacion = new Calificacion();
+                $calificacion->comentario_id = $comentario->id;
+                $calificacion->puntaje = $request->calif;
+                $calificacion->save();
+            }
 
             return response()->json($comentario);
         }
