@@ -15,12 +15,9 @@ class CreateCalificaionsTable extends Migration
     {
         Schema::create('calificaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('descripcion');
             $table->integer('puntaje')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->integer('producto_id')->unsigned();
-
-            $table->foreign("producto_id")->references("id")->on("productos")->onDelete('cascade');
+            $table->integer('comentario_id')->unsigned();
+            $table->foreign("comentario_id")->references("id")->on("comentarios")->onDelete('cascade');
             $table->timestamps();
         });
     }
