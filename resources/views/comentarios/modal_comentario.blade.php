@@ -26,8 +26,7 @@
 							
 						</p>
 						<p>
-						<span class="col-sm-2"><small>Puntuacion</small></span>
-						<label class="col-sm-2">
+						<!-- <label class="col-sm-2">
 							<i class="fa fa-star-o"></i>1 <input type="radio" name="calif" class="calif" value="1">
 						</label>
 						<label class="col-sm-2">
@@ -41,7 +40,15 @@
 						</label>
 						<label class="col-sm-2">
 							<i class="fa fa-star-o"></i>5 <input type="radio" name="calif" class="calif" value="5">
-						</label>
+						</label> -->
+						<select id="star-rating" name="calif">
+							<option value="">Seleciona una calificacion</option>
+							<option value="5">Excelente</option>
+							<option value="4">Muy bueno</option>
+							<option value="3">Bueno</option>
+							<option value="2">Medio</option>
+							<option value="1">Terrible</option>
+						</select>
 						</p>
 					</div>	
 				</div>	

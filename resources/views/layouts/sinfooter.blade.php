@@ -18,6 +18,9 @@
     <!-- Datepicker Files -->
     <link rel="stylesheet" href="{{asset('plugins/jquery_datepicker/jquery-ui.css')}}">
 
+    <!-- star rating -->
+    <link rel="stylesheet" href="{{asset('plugins/star_rating/dist/star-rating.css')}}">
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -124,6 +127,7 @@
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
+    <script src="{{ asset('plugins/star_rating/dist/star-rating.min.js') }}"></script>
     @yield('script')
 </body>
 </html>

@@ -106,6 +106,16 @@
 <script>
 
 	$(document).ready(function() {
+
+		// manejo de calificaciones
+
+		$( '#star-rating' ).starrating({
+			clearable : true,
+			initialText: "Click para calificar",
+			onClick : null,
+			showText : true,
+		});
+		
 		// funcion para recargar
 		function reload_pag(){
 	    	location.reload();
@@ -118,6 +128,7 @@
 			var icon = $(".icon_fa");
 			var comentario = $("#coment").val();
 			var producto_id = $("#producto_id").val();
+			var calif = $("#star-rating").val();
 			var token = $("#token").val();
 			icon.addClass("fa fa-spinner fa-pulse fa-fw");
 			btn.text('Espere...');
@@ -128,7 +139,7 @@
 				url: '../comentarios',
 				type: 'POST',
 				dataType: 'JSON',
-				data: {descripcion: comentario, producto_id: producto_id},
+				data: {descripcion: comentario, producto_id: producto_id, calif: calif},
 			})
 			.done(function(data) {
 				// console.log(data);
