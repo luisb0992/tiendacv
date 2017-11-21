@@ -17,7 +17,7 @@ class CreateCalificaionsTable extends Migration
             $table->increments('id');
             $table->integer('puntaje')->unsigned();
             $table->integer('comentario_id')->unsigned();
-            $table->foreign("comentario_id")->references("id")->on("comentarios")->onDelete('cascade');
+            $table->foreign('comentario_id')->references('id')->on('comentarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

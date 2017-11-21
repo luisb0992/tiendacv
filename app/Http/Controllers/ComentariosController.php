@@ -38,7 +38,7 @@ class ComentariosController extends Controller
     {
         $this->validate($request, [
             'descripcion' =>'required|string',
-            'calif' =>'required|numeric'
+            'puntaje' =>'required|numeric'
         ]);
         
         if ($request->ajax()) {
@@ -48,14 +48,14 @@ class ComentariosController extends Controller
             $comentario->user_id = \Auth::user()->id;
             
             if ($comentario->save()) {
-                $caiificacion = new Calificacion();
-                // dd($comentario->id, $request->calif);
+                $calificacion = new Calificacion();
+                // dd($comentario->id, $request->puntaje);
                 $calificacion->comentario_id = $comentario->id;
-                $calificacion->puntaje = $request->calif;
+                $calificacion->puntaje = $request->puntaje;
                 $calificacion->save();
                 
-                return response()->json($calificacion);
             }
+        return response()->json($comentario);
 
         }
     }

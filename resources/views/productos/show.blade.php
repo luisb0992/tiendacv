@@ -65,6 +65,7 @@
 					<a class="list-group-item">
 						<h4 class="list-group-item-heading">{{ $comentarios->users->name.' '.$comentarios->users->ape }}</h4>
 						<p class="list-group-item-text">{{ $comentarios->descripcion }}</p>
+						<p class="list-group-item-text">{{ $comentarios->calificacion->puntaje }}</p>
 					</a>
 					<br>
 				@else	
@@ -72,6 +73,7 @@
 						<a class="list-group-item">
 							<h4 class="list-group-item-heading">{{ $coment->users->name.' '.$coment->users->ape }}</h4>
 							<p class="list-group-item-text">{{ $coment->descripcion }}</p>
+							<p class="list-group-item-text">{{ $coment->calificacion->puntaje }}</p>
 						</a>
 						<br>
 					@endforeach
@@ -128,7 +130,7 @@
 			var icon = $(".icon_fa");
 			var comentario = $("#coment").val();
 			var producto_id = $("#producto_id").val();
-			var calif = $("#star-rating").val();
+			var puntaje = $(".puntaje").val();
 			var token = $("#token").val();
 			icon.addClass("fa fa-spinner fa-pulse fa-fw");
 			btn.text('Espere...');
@@ -139,7 +141,7 @@
 				url: '../comentarios',
 				type: 'POST',
 				dataType: 'JSON',
-				data: {descripcion: comentario, producto_id: producto_id, calif: calif},
+				data: {descripcion: comentario, producto_id: producto_id, puntaje: puntaje},
 			})
 			.done(function(data) {
 				// console.log(data);
@@ -152,7 +154,7 @@
 			    setTimeout(reload_pag, 5000);
 			})
 			.fail(function(error) {
-				// console.log(error);
+				console.log(error.responseJSON);
 				// $("#comentario").modal('toggle');
 			    $("#modal-fail").fadeIn(800,'linear');
 			    $("#modal_fail_fail").text(error.responseJSON.descripcion[0]);
