@@ -63,19 +63,26 @@
 		<div class="list-group">
 				@if($count_coment == 1)
 					<a class="list-group-item">
-						<h4 class="list-group-item-heading">{{ $comentarios->users->name.' '.$comentarios->users->ape }}</h4>
+						<p class="star-show">
+							{{ $comentarios->calificacion->puntaje }}
+						</p>
+						<h4 class="list-group-item-heading">
+							{{ $comentarios->users->name.' '.$comentarios->users->ape }}
+						</h4>
 						<p class="list-group-item-text">{{ $comentarios->descripcion }}</p>
-						<p class="list-group-item-text">{{ $comentarios->calificacion->puntaje }}</p>
 					</a>
 					<br>
 				@else	
 					@foreach($comentarios as $coment)
 						<a class="list-group-item">
-							<h4 class="list-group-item-heading">{{ $coment->users->name.' '.$coment->users->ape }}</h4>
+							<h4 class="list-group-item-heading">
+								{{ $coment->users->name.' '.$coment->users->ape }}
+								<span style="color:#CACACA;">|</span>
+								<span>{{ $coment->calificacion->puntaje }}</span>
+								<i class="fa fa-star" style="color: #EBD413;"></i>
+							</h4>
 							<p class="list-group-item-text">{{ $coment->descripcion }}</p>
-							<p class="list-group-item-text">{{ $coment->calificacion->puntaje }}</p>
 						</a>
-						<br>
 					@endforeach
 				@endif
 		</div>	
@@ -111,11 +118,17 @@
 
 		// manejo de calificaciones
 
-		$( '#star-rating' ).starrating({
+		$( '.star-rating' ).starrating({
 			clearable : true,
 			initialText: "Click para calificar",
 			onClick : null,
 			showText : true,
+		});
+		$( '.star-show' ).starrating({
+			clearable : false,
+			initialText: "Click para calificar",
+			onClick : null,
+			showText : false,
 		});
 		
 		// funcion para recargar

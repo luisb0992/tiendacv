@@ -25,7 +25,7 @@
 							<strong>Como calificarias este producto?</strong><br>
 						</p>
 						<p>
-						<select id="star-rating" name="puntaje" class="puntaje">
+						<select id="" name="puntaje" class="puntaje star-rating">
 							<option value="">Seleciona una calificacion</option>
 							<option value="5">Excelente</option>
 							<option value="4">Muy bueno</option>

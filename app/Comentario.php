@@ -22,6 +22,14 @@ class Comentario extends Model
     	return $this->hasOne("App\Calificacion", "comentario_id");	
     }
 
+    // public function estrellas(){
+    //     $star = $this->calificacion;
+
+    //     if ($star->puntaje == ) {
+    //         # code...
+    //     }
+    // }
+
     // contar comentarios de cada producto
     public static function countComentarios($id){
     	return Comentario::where("producto_id", $id)->count();
