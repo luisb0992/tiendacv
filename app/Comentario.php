@@ -15,8 +15,20 @@ class Comentario extends Model
     }
 
     public function producto(){
-    	return $this->belongsTo("App\Producto", "producto_id");	
+        return $this->belongsTo("App\Producto", "producto_id"); 
     }
+
+    public function calificacion(){
+    	return $this->hasOne("App\Calificacion", "comentario_id");	
+    }
+
+    // public function estrellas(){
+    //     $star = $this->calificacion;
+
+    //     if ($star->puntaje == ) {
+    //         # code...
+    //     }
+    // }
 
     // contar comentarios de cada producto
     public static function countComentarios($id){

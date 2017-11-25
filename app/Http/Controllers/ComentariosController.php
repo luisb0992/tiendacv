@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comentario;
+use App\Calificacion;
 
 class ComentariosController extends Controller
 {
@@ -37,9 +38,9 @@ class ComentariosController extends Controller
     {
         $this->validate($request, [
             'descripcion' =>'required|string',
-            'calif' =>'required|numeric'
+            'puntaje' =>'required|numeric'
         ]);
-
+        
         if ($request->ajax()) {
             $comentario = new Comentario();
             $comentario->descripcion = $request->descripcion;
@@ -47,13 +48,15 @@ class ComentariosController extends Controller
             $comentario->user_id = \Auth::user()->id;
             
             if ($comentario->save()) {
-                $caiificacion = new Calificacion();
+                $calificacion = new Calificacion();
+                // dd($comentario->id, $request->puntaje);
                 $calificacion->comentario_id = $comentario->id;
-                $calificacion->puntaje = $request->calif;
+                $calificacion->puntaje = $request->puntaje;
                 $calificacion->save();
+                
             }
+        return response()->json($comentario);
 
-            return response()->json($comentario);
         }
     }
 

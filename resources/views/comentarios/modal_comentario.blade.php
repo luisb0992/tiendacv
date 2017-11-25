@@ -23,25 +23,16 @@
 					<div class="col-sm-12">
 						<p>
 							<strong>Como calificarias este producto?</strong><br>
-							
 						</p>
 						<p>
-						<span class="col-sm-2"><small>Puntuacion</small></span>
-						<label class="col-sm-2">
-							<i class="fa fa-star-o"></i>1 <input type="radio" name="calif" class="calif" value="1">
-						</label>
-						<label class="col-sm-2">
-							<i class="fa fa-star-o"></i>2 <input type="radio" name="calif" class="calif" value="2">
-						</label>
-						<label class="col-sm-2">
-							<i class="fa fa-star-o"></i>3 <input type="radio" name="calif" class="calif" value="3">
-						</label>
-						<label class="col-sm-2">
-							<i class="fa fa-star-o"></i>4 <input type="radio" name="calif" class="calif" value="4">
-						</label>
-						<label class="col-sm-2">
-							<i class="fa fa-star-o"></i>5 <input type="radio" name="calif" class="calif" value="5">
-						</label>
+						<select id="" name="puntaje" class="puntaje star-rating">
+							<option value="">Seleciona una calificacion</option>
+							<option value="5">Excelente</option>
+							<option value="4">Muy bueno</option>
+							<option value="3">Bueno</option>
+							<option value="2">Medio</option>
+							<option value="1">Terrible</option>
+						</select>
 						</p>
 					</div>	
 				</div>	

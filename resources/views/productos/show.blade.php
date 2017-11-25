@@ -63,17 +63,26 @@
 		<div class="list-group">
 				@if($count_coment == 1)
 					<a class="list-group-item">
-						<h4 class="list-group-item-heading">{{ $comentarios->users->name.' '.$comentarios->users->ape }}</h4>
+						<p class="star-show">
+							{{ $comentarios->calificacion->puntaje }}
+						</p>
+						<h4 class="list-group-item-heading">
+							{{ $comentarios->users->name.' '.$comentarios->users->ape }}
+						</h4>
 						<p class="list-group-item-text">{{ $comentarios->descripcion }}</p>
 					</a>
 					<br>
 				@else	
 					@foreach($comentarios as $coment)
 						<a class="list-group-item">
-							<h4 class="list-group-item-heading">{{ $coment->users->name.' '.$coment->users->ape }}</h4>
+							<h4 class="list-group-item-heading">
+								{{ $coment->users->name.' '.$coment->users->ape }}
+								<span style="color:#CACACA;">|</span>
+								<span>{{ $coment->calificacion->puntaje }}</span>
+								<i class="fa fa-star" style="color: #EBD413;"></i>
+							</h4>
 							<p class="list-group-item-text">{{ $coment->descripcion }}</p>
 						</a>
-						<br>
 					@endforeach
 				@endif
 		</div>	
@@ -106,6 +115,22 @@
 <script>
 
 	$(document).ready(function() {
+
+		// manejo de calificaciones
+
+		$( '.star-rating' ).starrating({
+			clearable : true,
+			initialText: "Click para calificar",
+			onClick : null,
+			showText : true,
+		});
+		$( '.star-show' ).starrating({
+			clearable : false,
+			initialText: "Click para calificar",
+			onClick : null,
+			showText : false,
+		});
+		
 		// funcion para recargar
 		function reload_pag(){
 	    	location.reload();
@@ -118,6 +143,7 @@
 			var icon = $(".icon_fa");
 			var comentario = $("#coment").val();
 			var producto_id = $("#producto_id").val();
+			var puntaje = $(".puntaje").val();
 			var token = $("#token").val();
 			icon.addClass("fa fa-spinner fa-pulse fa-fw");
 			btn.text('Espere...');
@@ -128,7 +154,7 @@
 				url: '../comentarios',
 				type: 'POST',
 				dataType: 'JSON',
-				data: {descripcion: comentario, producto_id: producto_id},
+				data: {descripcion: comentario, producto_id: producto_id, puntaje: puntaje},
 			})
 			.done(function(data) {
 				// console.log(data);
@@ -141,7 +167,7 @@
 			    setTimeout(reload_pag, 5000);
 			})
 			.fail(function(error) {
-				// console.log(error);
+				console.log(error.responseJSON);
 				// $("#comentario").modal('toggle');
 			    $("#modal-fail").fadeIn(800,'linear');
 			    $("#modal_fail_fail").text(error.responseJSON.descripcion[0]);
