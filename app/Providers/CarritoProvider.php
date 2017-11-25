@@ -29,7 +29,7 @@ class CarritoProvider extends ServiceProvider
             if ($user) {
                 $carrito_id = \Session::get('carrito_id');
                 $carrito = Carrito::findOrCreateBySessionID($carrito_id);
-                // \Session::put("carrito_id", $carrito->id); 
+                \Session::put("carrito_id", $carrito->id); 
 
                 $view->with('carrito', $carrito);
 
