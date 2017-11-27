@@ -29,6 +29,8 @@ Route::resource('cp','ProductosCarritosController',['middleware' => ['auth']]);
 
 Route::resource('comentarios','ComentariosController',['middleware' => ['auth']]);
 
+Route::resource('preguntas','PreguntasController',['middleware' => ['auth']]);
+
 Route::get('productos/images/{filename}',function($filename){
 	// nos ubicamos en la ruta storage
 	$path = storage_path("app/images/$filename");

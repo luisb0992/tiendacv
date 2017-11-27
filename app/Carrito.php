@@ -48,13 +48,23 @@ class Carrito extends Model
 
    //metodo para buxcar el carrito si hay un id
    public static function findBySession($carrito_id){
-   		return Carrito::find($carrito_id);
+   		if (Carrito::find($carrito_id)) {
+          return Carrito::find($carrito_id);
+      }else{
+          return Carrito::createWithoutSession();
+      }
    }
 
    //metodo para crear el carrito de compras
    public static function createWithoutSession(){
-   		return Carrito::create([
-   				"status" => "Incompleto"
-   			]);
+
+      $carrito = new Carrito();
+      $carrito->status = "Incompleto";
+      $carrito->save();
+
+      return $carrito;
+   		// return Carrito::create([
+   		// 		"status" => "Incompleto"
+   		// 	]);
    }
 }
