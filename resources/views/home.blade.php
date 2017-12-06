@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sinfooter')
 
 @section('content')
 <div class="jumbotron jumbotron-purple">
@@ -32,8 +32,7 @@
                     </div> -->
                     <div class="col-md-4 div-padding" align="center">
                         @if($producto->extension)
-                    <i class="mdi mdi-tooltip-image"></i>
-                            <a href="{{ url('/productos/'.$producto->id) }}">
+                            <a href="{{ url('/productos/'.$producto->id) }}" data-toggle="tooltip" data-placement="top" title="{{ $producto->titulo }}">
                                 <img src="{{ url("/productos/images/$producto->id.$producto->extension") }}" alt="imagen" class="img-responsive" width="50">
                             </a>
                         @else
