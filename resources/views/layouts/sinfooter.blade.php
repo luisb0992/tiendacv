@@ -71,6 +71,10 @@
                                 {{ $carrito->productoSize() }}
                             </span>
                         </a>
+                        <a href="" class="navbar-brand a_white">|</a>
+                        <a href="{{ url('/home') }}" class="navbar-brand a_white">
+                            <i class="fa fa-dashboard"></i> Dashboard
+                        </a>
                         @else
                         <a class="navbar-brand a_white" href="{{ url('/') }}">
                             <i class="fa fa-"></i>

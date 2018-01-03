@@ -43,7 +43,7 @@
     }
     body
     {
-        margin: 0 0 60px;
+        margin: 0 0 0px;/*  el tercero tenia 60 px */
         background-color: #fafafa;
     }
     </style>
@@ -63,7 +63,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <div class="n">
+                    <div class="">
                         @if(Auth::check())
                         <a href="{{ url('/carrito') }}" class="navbar-brand a_white">
                             <i class="fa fa-shopping-cart"></i>
@@ -71,6 +71,10 @@
                             <span class="badge_personal">
                                 {{ $carrito->productoSize() }}
                             </span>
+                        </a>
+                        <a href="" class="navbar-brand a_white">|</a>
+                        <a href="{{ url('/home') }}" class="navbar-brand a_white">
+                            <i class="fa fa-dashboard"></i> Dashboard
                         </a>
                         @else
                         <a class="navbar-brand a_white" href="{{ url('/') }}">
