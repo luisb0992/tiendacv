@@ -133,5 +133,10 @@
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/star_rating/dist/star-rating.min.js') }}"></script>
     @yield('script')
+    <script>
+        $('#myTooltip').on('hidden.bs.tooltip', function () {
+          // do something…
+        })
+    </script>
 </body>
 </html>

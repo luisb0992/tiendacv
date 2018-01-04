@@ -1,7 +1,7 @@
 @extends('layouts.sinfooter')
 @section('content')
 @if(count($tiendas) > 0)
-<div class="jumbotron jumbotron-orange">
+<div class="jumbotron jumbotron-red">
 	<div class="container">
 		@include('partials.message')
 		@foreach($tiendas as $tienda)
@@ -37,21 +37,20 @@
 		</h3>
 		@foreach($productos as $producto)
 			<div class="col-sm-12">
-				<div class="">
-					<div class="list-group-item">
-						<h5 class="text-uppercase list-group-item-text">
+				<div class="row well" style="border: 1px solid #8133B7; margin: 12px;">
+					<div class="">
+						<h5 class="text-uppercase">
 							<span>{{ $producto->titulo }}</span>
 						</h5>
 					</div>
-					<div class="col-sm-2 text-left div-padding" style="border-right: 1px solid #eee;">
-						<div style="width: 80px;">
+					<div class="col-sm-2 text-right div-padding" style="border-right: 1px solid #8133B7;">
+						
 							@if($producto->extension)
 								<img src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
-								alt="imagen" class="img-responsive">
+								alt="imagen" class="img-responsive" width="50">
 							@else
-								<img src="{{ asset('img/sin_imagen.png') }}" alt="imagen" class="img-producto img-responsive">
+								<img src="{{ asset('img/sin_imagen.png') }}" width="50" alt="imagen" class="img-producto img-responsive">
 							@endif
-						</div>
 					</div>
 					<div class="col-sm-10 text-left div-padding">
 						<ul class="list-unstyled">
@@ -61,14 +60,23 @@
 	                            </a>
 
 	                            <ul class="dropdown-menu" role="menu">
-	                                <li>
-	                                	<a href="{{ url('/productos/'.$producto->id) }}" class="btn btn-primary btn-block">Vista Detallada</a>
+	                                <li class="text-primary">
+	                                	<a href="{{ url('/productos/'.$producto->id) }}">
+	                                		<i class="fa fa-eye"></i>
+	                                		Vista Detallada
+	                                	</a>
 	                                </li>
-	                                <li>
-	                                	<a href="{{ url('/productos/'.$producto->id.'/edit') }}" class="btn btn-warning btn-block">Editar</a>
+	                                <li class="text-warning">
+	                                	<a href="{{ url('/productos/'.$producto->id.'/edit') }}">
+	                                		<i class="fa fa-arrow-up"></i>	
+	                                		Editar
+	                                	</a>
 	                                </li>
-	                                <li>
-	                                	<a href="{{ url('/productos/'.$producto->id) }}" class="btn btn-danger btn-block">Eliminar</a>
+	                                <li class="text-danger">
+	                                	<a href="{{ url('/productos/'.$producto->id) }}">
+	                                		<i class="fa fa-trash"></i>
+	                                		Eliminar
+	                                	</a>
 	                                </li>
 	                            </ul>
 	                        </li>
