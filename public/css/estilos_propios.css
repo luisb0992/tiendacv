@@ -2,6 +2,9 @@ a:hover{
 	text-decoration: none;
 	color: #fff;
 }
+.padding_top_sep{
+	padding-top: 1em;
+}
 .margin-abajo
 {
     width: 100%;
@@ -190,6 +193,26 @@ a:hover{
 .badge_personal_3{
 	background-color: #FDFBFB;
 	color: #8133B7;
+}
+.badge_personal_preguntas_1{
+	font-size: 12px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-radius: 30px;
+	background-color: #1D1D1D;
+	color: #F8F7F7;
+}
+.badge_personal_preguntas_2{
+	font-size: 12px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	border-radius: 30px;
+	background-color: #C71818;
+	color: #F8F7F7;
 }
 .border_total{
 	border: 1px solid #ECECEC;

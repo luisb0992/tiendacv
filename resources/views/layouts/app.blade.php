@@ -99,18 +99,21 @@
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
                             <li class="dropdown a_white">
-                                <a href="#" class="dropdown-toggle a_white" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle a_white text-uppercase" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a class="a_white" href="{{ route('logout') }}"
+                                    <li class="jumbotron jumbotron-default">
+                                    <div class="">
+                                        <p class="h1_padding"><a href="#" class="text-primary"><i class="fa fa-user-circle-o"></i> Perfil</a></p>
+                                        <a class="btn btn-danger btn-block" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Cerrar sesion
                                         </a>
-
+                                    </div>    
+                                        
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>

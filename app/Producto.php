@@ -38,7 +38,12 @@ class Producto extends Model
         return $this->hasMany('App\Calificaion');
     }
     //------------- fin de las relaciones
-   
+    
+    // metodos personalizados
+    public function preguntas($producto_id){
+        return Pregunta::where("producto_id", $producto_id)->count();
+    }
+
     public function scopeLatest($query){
 		return $query->orderBy("id", "desc");
 	}

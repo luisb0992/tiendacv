@@ -8,6 +8,7 @@
 		<div class="col-sm-9 col-xs-12">
 		    <h2 class="text-capitalize">{{ $tienda->titulo }}</h2>
 		    <p><small>{{ $tienda->sub_titulo }}</small></p>
+		    <p><small>{{ $tienda->RIF }}</small></p>
 		</div>
 		<div class="col-sm-3 col-xs-12 text-peque">
 		    <h2 class="text-capitalize text-center">Configuracion</h2>
@@ -38,12 +39,12 @@
 		@foreach($productos as $producto)
 			<div class="col-sm-12">
 				<div class="row well" style="border: 1px solid #8133B7; margin: 12px;">
-					<div class="">
+					<div class="" style="border-bottom: 1px solid #8133B7">
 						<h5 class="text-uppercase">
 							<span>{{ $producto->titulo }}</span>
 						</h5>
 					</div>
-					<div class="col-sm-2 text-right div-padding" style="border-right: 1px solid #8133B7;">
+					<div class="col-sm-2 text-right padding_top_sep" style="border-right: 1px solid #8133B7;">
 						
 							@if($producto->extension)
 								<img src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
@@ -52,8 +53,8 @@
 								<img src="{{ asset('img/sin_imagen.png') }}" width="50" alt="imagen" class="img-producto img-responsive">
 							@endif
 					</div>
-					<div class="col-sm-10 text-left div-padding">
-						<ul class="list-unstyled">
+					<div class="col-sm-10 text-left padding_top_sep">
+						<ul class="list-unstyled nav-pills">
 							<li class="dropdown">
 	                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
 	                                <i class="fa fa-gear"></i> <span class="caret"></span>
@@ -80,6 +81,25 @@
 	                                </li>
 	                            </ul>
 	                        </li>
+	                        <li>&nbsp;  &nbsp;</li>
+	                        <li>
+	                        	<span>
+	                        		@if($producto->preguntas($producto->id) == 0)
+			                    	<span class="badge_personal_preguntas_1">{{ $producto->preguntas($producto->id) }}</span>
+			                    	<a href="#" data-toggle="tooltip" data-placement="top" title="Preguntas sin responder" 
+			                    		style="text-decoration: none; color: #000;">
+			                    		<i class="fa fa-question-circle-o"></i>
+			                    	</a>
+			                    	@else
+			                    	<span class="badge_personal_preguntas_2" data-toggle="tooltip" data-placement="top" title="Preguntas sin responder">{{ $producto->preguntas($producto->id) }}</span>
+			                    	<button type="button" class="btn btn-link" data-toggle="modal" data-target="#buscar_preguntas" 
+			                    		role="button" id="btn_pre" value="{{ $producto->id }}" onclick="PreguntasPro(this);">
+			                    		<i class="fa fa-question-circle-o text-danger"></i>
+			                    	</button>
+			                    	@include("tiendas.modal_buscar_preguntas")
+			                    	@endif
+			                    </span>
+	                        </li>
 	                    </ul>
 					<!-- <div class="caption text-peque margin-bottom-div">
 						<p>
@@ -95,13 +115,17 @@
 	</div>
 </div>
 @else
-<div class="jumbotron jumbotron-purple">
+<div class="jumbotron jumbotron-red">
     <div class="container body_personal">
-        <h1>Bienvenido! {{ Auth::user()->name }}</h1>
-        <p>Tienda Comercial te permite crear una tienda virtual para que puedas vender tus articulos de forma segura y sin costo alguno. Empieza a crear tu tienda y publicar tus productos!</p>
-        <p><a href="{{ url('/tiendas/create') }}" class="btn-morado btn-lg">Crear Tienda</a></p>
+        <h1> Vaya {{ Auth::user()->name }}!</h1>
+        <p>Al parecer no posees una tienda registrada, ¿deseas crear una?</p>
+        <p><a href="{{ url('/tiendas/create') }}" class="btn-morado btn-lg">Crear Tienda ya!</a></p>
     </div>
 </div>
 @endif
+@endsection
+
+@section('script')
+	<script src="{{ asset('js/tienda.js') }}"></script>
 @endsection
 	

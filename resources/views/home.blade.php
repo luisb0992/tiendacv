@@ -9,7 +9,7 @@
         @if($usertienda > 0)
             <p><a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">Visitar mi Tienda</a></p>  
         @else
-            <p class="body_personal">Si tienes un comercio y quieres vender tus articulos empieza a crear tu tienda YA!</p>
+            <p class=""><b>Si tienes un comercio y quieres vender tus articulos empieza a crear tu tienda YA!</b></p>
         	<p><a href="{{ url('/tiendas/create') }}" class="btn-morado btn-lg">Crear Tienda</a></p>
         @endif
     </div>

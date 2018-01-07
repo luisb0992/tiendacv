@@ -21,14 +21,17 @@
     <!-- star rating -->
     <link rel="stylesheet" href="{{asset('plugins/star_rating/dist/star-rating.css')}}">
 
+    <!-- notificaciones menu -->
+    <link rel="stylesheet" href="{{ asset('plugins/notification_menu/css/style_light.css') }}">
+    
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <!-- <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>     -->
 
     <style type="text/css" media="screen">
     .navbar{
@@ -97,19 +100,25 @@
                             <li class="a_white"><a class="a_white" href="{{ route('login') }}">Login</a></li>
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
+                            <li id="messages" class="a_white">
+                                <a href="#" class="a_white"> <i class="fa fa-info-circle"></i></a>
+                            </li>
                             <li class="dropdown a_white">
-                                <a href="#" class="dropdown-toggle a_white" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle a_white text-uppercase" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a class="a_white" href="{{ route('logout') }}"
+                                    <li class="jumbotron jumbotron-default">
+                                    <div class="">
+                                        <p class="h1_padding"><a href="#" class="text-primary"><i class="fa fa-user-circle-o"></i> Perfil</a></p>
+                                        <a class="btn btn-danger btn-block" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Cerrar sesion
                                         </a>
-
+                                    </div>    
+                                        
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
@@ -132,11 +141,24 @@
     <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/star_rating/dist/star-rating.min.js') }}"></script>
-    @yield('script')
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> -->
+    <!-- <script src="{{ asset('plugins/notification_menu/js/jquery-ui-1.8.14.custom.min.js') }}"></script>
+    <script src="{{ asset('plugins/notification_menu/js/ttw-notification-menu.min.js') }}"></script>
     <script>
-        $('#myTooltip').on('hidden.bs.tooltip', function () {
-          // do something…
-        })
-    </script>
+        var notifications = new $.ttwNotificationMenu({
+              colors:['#f56c7e', '#fec151', '#7ad2f4']
+        }); 
+
+        notifications.initMenu({
+            messages:'#messages'
+        });
+
+        notifications.createNotification({ message:'This is a notification', category:'messages'});
+        notifications.createNotification({ message:'This is a notification 2', category:'messages'});
+
+        // notifications.getNotifications('messages', 'unread');
+    </script> -->
+    @yield('script')
+    
 </body>
 </html>

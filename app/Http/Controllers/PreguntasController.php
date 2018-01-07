@@ -71,7 +71,9 @@ class PreguntasController extends Controller
      */
     public function edit($id)
     {
-        //
+            $preguntas = Pregunta::with('user')->where("producto_id",$id)->get();
+
+            return response()->json($preguntas);
     }
 
     /**
@@ -83,7 +85,14 @@ class PreguntasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($id);
+
+        $respuesta = Pregunta::findOrFail($id);
+        $respuesta->respuesta = $request->respuesta;
+        $respuesta->save();
+
+        return response()->json("well done!");
+
     }
 
     /**
