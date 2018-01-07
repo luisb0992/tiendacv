@@ -18,6 +18,12 @@ class Pregunta extends Model
     }
 
     public function user(){
-    	return $this->belongsTo("App\User", "user_id");
+        return $this->belongsTo("App\User", "user_id");
+    }
+
+    public function formato_created(){
+    	$created = $this->created_at;
+        $newcreated = date('d-m-Y',strtotime(str_replace('/', '-', $created)));
+        return $newcreated;
     }
 }
