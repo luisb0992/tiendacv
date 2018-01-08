@@ -17,6 +17,7 @@ class CreateTiendasTable extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('sub_titulo')->nullable();
+            $table->string('letra');
             $table->string('RIF');
             $table->string('correo');
             $table->string('telefono_1');

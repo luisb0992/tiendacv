@@ -13,7 +13,7 @@ function PreguntasPro(btn_pre){
 	    		"<thead><tr><td></td><td></td></tr></thead>"+
 	    		"<tbody id='data_res'>"+
 	    		"<tr>"+
-	    		"<td class='text-uppercase label-danger a_white' colspan='2'>"+
+	    		"<td class='text-uppercase label-danger' colspan='2' style='color: #fff;'>"+
 	    			"<i class='fa fa-user-circle-o'></i>"+" "+val.user.name+" "+val.user.ape+"<span class='pull-right'><small>"+val.created_at+"</small></span>"+
 	    		"</td>"+
 	    		"</tr>"+
