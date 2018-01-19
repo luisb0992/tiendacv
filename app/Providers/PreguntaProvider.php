@@ -4,9 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
-use App\Carrito;
+use App\Pregunta;
+use App\Producto;
 
-class CarritoProvider extends ServiceProvider
+class PreguntaProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -20,12 +21,10 @@ class CarritoProvider extends ServiceProvider
             $user = Auth::check();
             
             if ($user) {
-                $carrito_id = \Session::get('carrito_id');
-                $carrito = Carrito::findOrCreateBySessionID($carrito_id);
-                // dd($carrito);
-                \Session::put("carrito_id", $carrito->id); 
 
-                $view->with('carrito', $carrito);
+                $preguntas = Producto::total_preguntas();
+
+                $view->with('preguntas', $preguntas);
 
              } 
 

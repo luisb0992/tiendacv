@@ -23,6 +23,9 @@
 
     <!-- notificaciones menu -->
     <link rel="stylesheet" href="{{ asset('plugins/notification_menu/css/style_light.css') }}">
+
+    <!-- pnotify -->
+    <link href="{{ asset('plugins/pnotify/pnotify.custom.min.css') }}" media="all" rel="stylesheet" type="text/css" />
     
     <!-- Scripts -->
     <script>
@@ -101,7 +104,12 @@
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
                             <li id="messages" class="a_white">
-                                <a href="#" class="a_white"> <i class="fa fa-info-circle"></i></a>
+                                <a href="#" class="a_white" id="btn-msj"> 
+                                    <i class="fa fa-info-circle"></i>
+                                    <span class="badge_personal">
+                                        {{ $preguntas }}
+                                    </span>
+                                </a>
                             </li>
                             <li class="dropdown a_white">
                                 <a href="#" class="dropdown-toggle a_white text-uppercase" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -141,6 +149,7 @@
     <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/star_rating/dist/star-rating.min.js') }}"></script>
+    <script src="{{ asset('plugins/pnotify/pnotify.custom.min.js') }}"></script>
     <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> -->
     <!-- <script src="{{ asset('plugins/notification_menu/js/jquery-ui-1.8.14.custom.min.js') }}"></script>
     <script src="{{ asset('plugins/notification_menu/js/ttw-notification-menu.min.js') }}"></script>
