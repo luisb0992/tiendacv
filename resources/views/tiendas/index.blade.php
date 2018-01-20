@@ -85,15 +85,15 @@
 	                        <li>
 	                        	<span>
 	                        		@if($producto->preguntas($producto->id) == 0)
-			                    	<span class="badge_personal_preguntas_1">{{ $producto->preguntas($producto->id) }}</span>
 			                    	<a href="#" data-toggle="tooltip" data-placement="top" title="Preguntas sin responder" 
 			                    		style="text-decoration: none; color: #000;">
+			                    		<span class="badge_personal_preguntas_1">{{ $producto->preguntas($producto->id) }}</span>
 			                    		<i class="fa fa-question-circle-o"></i>
 			                    	</a>
 			                    	@else
-			                    	<span class="badge_personal_preguntas_2" data-toggle="tooltip" data-placement="top" title="Preguntas sin responder">{{ $producto->preguntas($producto->id) }}</span>
-			                    	<button type="button" class="btn btn-link" data-toggle="modal" data-target="#buscar_preguntas" 
+			                    	<button type="button" class="btn-link" data-toggle="modal" data-target="#buscar_preguntas" 
 			                    		role="button" id="btn_pre" value="{{ $producto->id }}" onclick="PreguntasPro(this);">
+			                    		<span class="badge_personal_preguntas_2" data-toggle="tooltip" data-placement="top" title="Preguntas sin responder">{{ $producto->preguntas($producto->id) }}</span>
 			                    		<i class="fa fa-question-circle-o text-danger"></i>
 			                    	</button>
 			                    	@include("tiendas.modal_buscar_preguntas")

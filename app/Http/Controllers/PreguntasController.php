@@ -71,11 +71,17 @@ class PreguntasController extends Controller
      */
     public function edit($id)
     {
-            $preguntas = Pregunta::with('user')->where("producto_id",$id)->get();
+            $preguntas = Pregunta::with('user')->where("producto_id",$id)->where("respuesta", null)->get();
+            // $data = array();
+            // foreach ($preguntas as $pre) {
+            //     $data [] = $pre->user->name." ".$pre->user->ape;
+            //     $data [] = $pre->pregunta;
+            //     $data [] = date('d-m-Y',strtotime(str_replace('/', '-', $pre->created_at)));
+            // }
+            // $preguntas = $data;
 
             return response()->json($preguntas);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -85,13 +91,13 @@ class PreguntasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($id);
+        // dd($request->all());
 
         $respuesta = Pregunta::findOrFail($id);
         $respuesta->respuesta = $request->respuesta;
         $respuesta->save();
 
-        return response()->json("well done!");
+        return response()->json($respuesta);
 
     }
 

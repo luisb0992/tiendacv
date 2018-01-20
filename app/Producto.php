@@ -41,7 +41,7 @@ class Producto extends Model
     
     // metodos personalizados
     public function preguntas($producto_id){
-        return Pregunta::where("producto_id", $producto_id)->count();
+        return Pregunta::where("producto_id", $producto_id)->where("respuesta", null)->count();
     }
 
     public function scopeLatest($query){
