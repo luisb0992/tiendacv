@@ -9,8 +9,20 @@
 		<input type="text" name="sub_titulo" class="form-control text-uppercase" id="sub_titulo" autocomplete>
 	</div>
 	<div class="form-group">
-		<label for="RIF">RIF</label>
-		<input type="text" name="RIF" class="form-control text-uppercase" id="RIF" required autocomplete>
+		<div class="col-sm-1">
+			<label for="Documento">Documento</label>
+			<select name="letra" class="form-control" required="">
+				<option value="">Seleccione...</option>
+				<option value="J">J</option>
+				<option value="G">G</option>
+				<option value="V">V</option>
+				<option value="C">C</option>
+			</select>
+		</div>
+		<div class="col-sm-11">
+			<label for="RIF">RIF</label>
+			<input type="text" name="RIF" class="form-control text-uppercase" id="RIF" required autocomplete>
+		</div>
 	</div>
 	<div class="form-group">
 		<label for="correo">E-mail</label>

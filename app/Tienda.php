@@ -9,7 +9,7 @@ class Tienda extends Model
     protected $table = 'tiendas';
 
     protected $fillable = [
-    	'titulo','sub_titulo','RIF',
+    	'titulo','sub_titulo','letra','RIF',
     	'correo', 'telefono_1', 'telefono_2',
     	'user_id','created_at','updated_at'
     ];

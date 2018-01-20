@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.sinfooter')
 @section('content')
 	<div class="jumbotron">
 		<div class="container body_personal white">

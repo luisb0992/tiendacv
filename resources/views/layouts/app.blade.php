@@ -98,6 +98,14 @@
                             <li class="a_white"><a class="a_white" href="{{ route('login') }}">Login</a></li>
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
+                            <li id="messages" class="a_white">
+                                <a href="#" class="a_white" id="btn-msj"> 
+                                    <i class="fa fa-info-circle"></i>
+                                    <span class="badge_personal">
+                                        {{ $preguntas }}
+                                    </span>
+                                </a>
+                            </li>
                             <li class="dropdown a_white">
                                 <a href="#" class="dropdown-toggle a_white text-uppercase" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

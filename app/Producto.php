@@ -44,6 +44,12 @@ class Producto extends Model
         return Pregunta::where("producto_id", $producto_id)->where("respuesta", null)->count();
     }
 
+    public static function total_preguntas(){
+        $user = \Auth::user()->id;
+        $productos = Producto::where("user_id", $user)->get(['id']);
+        return $preguntas = Pregunta::whereIn("producto_id", $productos)->where('respuesta', null)->count();
+    }
+
     public function scopeLatest($query){
 		return $query->orderBy("id", "desc");
 	}

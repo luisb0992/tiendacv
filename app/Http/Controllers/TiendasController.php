@@ -8,6 +8,7 @@ use App\Http\Requests\EditTIendaRequest;
 use App\Tienda;
 use App\Producto;
 use App\User;
+use App\Pregunta;
 
 class TiendasController extends Controller
 {
@@ -21,9 +22,12 @@ class TiendasController extends Controller
         $user_id = \Auth::user()->id;
         $productos = Producto::where('user_id','=',$user_id)->get();
         $tiendas = Tienda::where('user_id','=',$user_id)->get();
+        $preguntas = Producto::total_preguntas();
+        // dd($preguntas);
         return view('tiendas.index',[
             'tiendas' => $tiendas,
-            'productos' => $productos
+            'productos' => $productos,
+            'total_preguntas' => $preguntas
         ]);
     }
 
@@ -56,6 +60,7 @@ class TiendasController extends Controller
         }else{
             $tienda->titulo = strtoupper($request->titulo);
             $tienda->sub_titulo = strtoupper($request->sub_titulo);
+            $tienda->letra = $request->letra;
             $tienda->RIF = $request->RIF;
             $tienda->correo = strtoupper($request->correo);
             $tienda->telefono_1 = $request->telefono_1;
