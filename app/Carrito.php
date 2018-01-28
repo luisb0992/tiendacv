@@ -8,14 +8,19 @@ class Carrito extends Model
 {
     protected $table = 'carritos';
 
-    protected $fillable = ['status'];
+    protected $fillable = ['status', 'customid'];
 
     //--------relaciones
     public function productosCarritos(){
         return $this->hasMany('App\ProductoCarrito');
     }
+
    public function productos(){
       return $this->belongsToMany('App\Producto','productos_carritos');
+   }
+
+   public function orden(){
+      return $this->hasOne('App\Orden')->first();
    }
 
    //metodo para contar la cantidad de carritos de comprA
@@ -31,7 +36,7 @@ class Carrito extends Model
     //metodo para sumar los precios del carrito, el total de todos en dolares
     // se coloca / 100 solo para efectos de prueba via paypal
     public function totalUSD(){
-       return $this->productos()->sum("precio_dolar") / 100;
+       return $this->productos()->sum("precio_dolar");
     }
 
     //--metodo integrador de funcion que permite
@@ -66,5 +71,19 @@ class Carrito extends Model
    		// return Carrito::create([
    		// 		"status" => "Incompleto"
    		// 	]);
+   }
+
+   public function generateCustomId(){
+      return md5("$this->id $this->updated_at");
+   }
+
+   public function updateCustomId(){
+      $this->status = "aprovado";
+      $this->customid = $this->generateCustomId();
+       return $this->save();
+   }
+
+   public function aprovado(){
+      return $this->updateCustomId();
    }
 }

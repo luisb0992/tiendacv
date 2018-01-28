@@ -135,7 +135,6 @@
         </nav>
 
         @yield('content')
-        @include('layouts.footer')
     </div>
 
     <!-- Scripts -->

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Orden;
 
-use App\Carrito;
-use App\Paypal;
-
-class CarritosController extends Controller
+class OrdenesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,26 +14,15 @@ class CarritosController extends Controller
      */
     public function index()
     {
-        $carrito_id = \Session::get('carrito_id');
-        $carrito = Carrito::findOrCreateBySessionID($carrito_id);
-        $productos = $carrito->productos()->get();
-        $totalUSD = $carrito->totalUSD();
-        $totalBSF = $carrito->totalBSF();
-        return view('carritos.index',[
-            'productos' => $productos,
-            'totalUSD' => $totalUSD,
-            'totalBSF' => $totalBSF
+        $ordenes = Orden::latest()->get();
+        $totalmes = Orden::totalMes();
+        $totalmescount = Orden::totalMesCount();
+
+        return view("ordenes.index", [
+            'ordenes' => $ordenes,
+            'mes' => $totalmes,
+            'mescount' => $totalmescount,
         ]);
-    }
-
-    // metodo para pagar
-    public function pagar(Request $request){
-        $carrito_id = \Session::get('carrito_id');
-        $carrito = Carrito::findOrCreateBySessionID($carrito_id);
-        $paypal = new Paypal($carrito);
-        $pago = $paypal->generate();
-
-        return redirect($pago->getApprovalLink());
     }
 
     /**
@@ -67,14 +54,7 @@ class CarritosController extends Controller
      */
     public function show($id)
     {
-        // dd("llega al show");
-        $carrito = Carrito::where('customid', $id)->first();
-        $orden = $carrito->orden();
-
-        return view('carritos.orden', [
-                "carrito" => $carrito,
-                "orden" => $orden
-        ]);
+        //
     }
 
     /**

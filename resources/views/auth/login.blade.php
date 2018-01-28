@@ -5,7 +5,7 @@
     <div class="container">
         <!-- Bienvenida -->
         <div class="col-sm-8 text-justify">
-            <h1>Bienvenido!</h1>
+            <h2>Bienvenido!</h2>
             <p><b>Tienda Comercial</b> 
                 te permite crear una tienda virtual para que puedas vender tus articulos
                  de forma segura y sin costo alguno. Empieza a crear tu tienda y publicar

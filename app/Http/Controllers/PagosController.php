@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Carrito;
 use App\Paypal;
+use App\Orden;
 
-class CarritosController extends Controller
+class PagosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,26 +16,7 @@ class CarritosController extends Controller
      */
     public function index()
     {
-        $carrito_id = \Session::get('carrito_id');
-        $carrito = Carrito::findOrCreateBySessionID($carrito_id);
-        $productos = $carrito->productos()->get();
-        $totalUSD = $carrito->totalUSD();
-        $totalBSF = $carrito->totalBSF();
-        return view('carritos.index',[
-            'productos' => $productos,
-            'totalUSD' => $totalUSD,
-            'totalBSF' => $totalBSF
-        ]);
-    }
-
-    // metodo para pagar
-    public function pagar(Request $request){
-        $carrito_id = \Session::get('carrito_id');
-        $carrito = Carrito::findOrCreateBySessionID($carrito_id);
-        $paypal = new Paypal($carrito);
-        $pago = $paypal->generate();
-
-        return redirect($pago->getApprovalLink());
+        //
     }
 
     /**
@@ -56,7 +37,22 @@ class CarritosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carrito_id = \Session::get('carrito_id');
+        $carrito = Carrito::findOrCreateBySessionID($carrito_id);
+        $paypal = new Paypal($carrito);
+        $response = $paypal->execute($request->paymentId, $request->PayerID);
+
+        if ($response->state == "approved") {
+            \Session::remove("carrito_id");
+            $detalle = Orden::respuestaPaypal($response, $carrito);
+            $carrito->aprovado();
+        }
+        
+
+        return view('carritos.orden', [
+                "carrito" => $carrito,
+                "orden" => $detalle
+        ]);
     }
 
     /**
@@ -67,14 +63,7 @@ class CarritosController extends Controller
      */
     public function show($id)
     {
-        // dd("llega al show");
-        $carrito = Carrito::where('customid', $id)->first();
-        $orden = $carrito->orden();
-
-        return view('carritos.orden', [
-                "carrito" => $carrito,
-                "orden" => $orden
-        ]);
+        //
     }
 
     /**

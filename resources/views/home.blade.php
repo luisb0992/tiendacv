@@ -3,12 +3,12 @@
 @section('content')
 <div class="jumbotron jumbotron-purple">
     <div class="container">
-        <h1 class="text-capitalize">Bienvenido {{ Auth::user()->name }}!</h1>
+        <h3 class="text-capitalize">Bienvenido {{ Auth::user()->name }}!</h3>
         <p class="body_personal">Tienda Comercial te permite crear una tienda virtual para que puedas vender tus articulos de forma segura y sin costo alguno. 
         Tambien puedes indagar por el catalago de productos que tenemos disponible para ti.</p>
         @if($usertienda > 0)
             <p>
-                <a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">Visitar mi Tienda</a>
+                <a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">Visitar mi Tienda</a> 
             </p>  
         @else
             <p class="">
@@ -16,7 +16,7 @@
             </p>
         	<p>
                 <a href="{{ url('/tiendas/create') }}" class="btn-morado btn-lg">Crear Tienda</a>
-            </p>
+            </p>    
         @endif
     </div>
 </div>

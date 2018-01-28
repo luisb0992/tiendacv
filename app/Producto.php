@@ -60,7 +60,7 @@ class Producto extends Model
     	->setDescription($this->descripcion)
     	->setCurrency('USD')
     	->setQuantity(1)
-    	->setPrice($this->precio_dolar / 100); 
+    	->setPrice($this->precio_dolar); 
     }
 
     public function nameCategoria(){
