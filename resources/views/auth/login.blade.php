@@ -1,7 +1,7 @@
 @extends('layouts.app_login')
 
 @section('content')
-<div class="jumbotron  div-height img_fondo">
+<div class="jumbotron div-height img_fondo">
     <div class="container">
         <!-- Bienvenida -->
         <div class="col-sm-8 text-justify">
@@ -12,7 +12,7 @@
                  de forma segura<br> y sin costo alguno. 
                  <br><br> 
                  <b>Empieza a <a href="{{ route('register') }}" class="text-morado">crear</a> tu tienda y publicar tus productos!</b>
-            </p>  
+            </p>
         </div>
         <div class="col-sm-2 pull-right">
             <img src="{{ asset('img/carrito_1.png') }}" class="img-responsive">

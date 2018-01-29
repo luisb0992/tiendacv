@@ -50,10 +50,6 @@ class Producto extends Model
         return $preguntas = Pregunta::whereIn("producto_id", $productos)->where('respuesta', null)->count();
     }
 
-    public function pre(){
-        return $this->hasMany('App\Pregunta');
-    }
-
     public function scopeLatest($query){
 		return $query->orderBy("id", "desc");
 	}
@@ -64,7 +60,7 @@ class Producto extends Model
     	->setDescription($this->descripcion)
     	->setCurrency('USD')
     	->setQuantity(1)
-    	->setPrice($this->precio_dolar / 100); 
+    	->setPrice($this->precio_dolar); 
     }
 
     public function nameCategoria(){

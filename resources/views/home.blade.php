@@ -8,7 +8,7 @@
         Tambien puedes indagar por el catalago de productos que tenemos disponible para ti.</p>
         @if($usertienda > 0)
             <p>
-                <a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">Visitar mi Tienda</a>
+                <a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">Visitar mi Tienda</a> 
             </p>  
         @else
             <p class="">
@@ -16,7 +16,7 @@
             </p>
         	<p>
                 <a href="{{ url('/tiendas/create') }}" class="btn-morado btn-lg">Crear Tienda</a>
-            </p>
+            </p>    
         @endif
     </div>
 </div>

@@ -10,6 +10,11 @@ a:hover{
 .padding_top_sep{
 	padding-top: 1em;
 }
+.border_bottom_blue{
+	border-bottom: solid 1px #89C2FD;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
 .margin-abajo
 {
     width: 100%;
