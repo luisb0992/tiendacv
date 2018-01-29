@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
-use App\Pregunta;
 use App\Producto;
 
 class PreguntaProvider extends ServiceProvider

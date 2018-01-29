@@ -1,3 +1,8 @@
+.box-data{
+	-webkit-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+	-moz-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+	box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+}
 a:hover{
 	text-decoration: none;
 	color: #fff;
@@ -357,6 +362,13 @@ a:hover{
 }
 .jumbotron-purple{
 	background-color: #EED2FB;
+}
+.jumbotron-purple_2{
+	background-color: #68318F;
+	color: #EEEEEE;
+}
+.jumbotron-white{
+	background-color: #fff;
 }
 .jumbotron-fucsia{
 	background-color: #FBD2F7;

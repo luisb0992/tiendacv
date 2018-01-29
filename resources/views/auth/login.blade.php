@@ -1,18 +1,21 @@
 @extends('layouts.app_login')
 
 @section('content')
-<div class="jumbotron jumbotron-purple div-height">
+<div class="jumbotron  div-height img_fondo">
     <div class="container">
         <!-- Bienvenida -->
         <div class="col-sm-8 text-justify">
-            <h1>Bienvenido!</h1>
-            <p><b>Tienda Comercial</b> 
-                te permite crear una tienda virtual para que puedas vender tus articulos
-                 de forma segura y sin costo alguno. Empieza a crear tu tienda y publicar
-                  tus productos!</p>  
+            <h2>Bienvenido!</h2>
+            <p>
+                <b>Tienda Comercial</b> 
+                te permite crear una tienda virtual<br> para que puedas vender tus articulos
+                 de forma segura<br> y sin costo alguno. 
+                 <br><br> 
+                 <b>Empieza a <a href="{{ route('register') }}" class="text-morado">crear</a> tu tienda y publicar tus productos!</b>
+            </p>  
         </div>
-        <div class="col-sm-4">
-            <img src="{{ asset('img/purpura.jpg') }}" class="col-sm-12 col-xs-12">
+        <div class="col-sm-2 pull-right">
+            <img src="{{ asset('img/carrito_1.png') }}" class="img-responsive">
         </div>
     </div>
 </div>

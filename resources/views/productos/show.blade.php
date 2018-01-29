@@ -1,30 +1,32 @@
 @extends('layouts.sinfooter')
 @section('content')
 @if($producto)
-	<div class="jumbotron jumbotron-purple">
+	<div class="jumbotron jumbotron-gris-claro img_fondo_3" >
 		<div class="container">
-			<div class="col-sm-8 col-md-8">
-				<h2 class="body_personal">{{ $producto->titulo }}</h2>
+			<h2 style="color: #fefefe;">{{ $producto->titulo }}</h2>
+			<div class="col-sm-8">
 				<hr>
 				@if($producto->extension)
-					<img width="350px" height="300px" src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
+					<a href="{{ url("/productos/images/$producto->id.$producto->extension") }}" data-toggle="lightbox" data-gallery="example-gallery">
+						<img style="max-width: 40%; max-height: 40%;" src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
 					class="img-rounded center-block img-responsive">
+					</a>
 				@else
-					<img src="{{ asset('img/sin_imagen.png') }}" alt="imagen" class="img-rounded center-block img-responsive" width="350px" height="300px">
+					<img src="{{ asset('img/sin_imagen.png') }}" alt="imagen" class="img-rounded center-block img-responsive" style="max-width: 40%; max-height: 40%;">
 				@endif
 			</div>
 			<div class="col-sm-4 col-md-4">
 				<h2>&nbsp;</h2>
 				<hr>
-				<div class="container white">
-					<h4 class="text-capitalize">
+				<div class="container white box-data">
+					<h4 class="text-capitalize text-morado">
 						Precio
 					</h4>
 					<div class="container">
 						<p>{{ $producto->precio_bolivar }} <span class="text-danger">BsF</span></p>
 						<p>{{ $producto->precio_dolar }} <span class="text-primary">USD</span></p>
 					</div>	
-					<h4 class="text-capitalize">metodos de pago</h4>
+					<h4 class="text-capitalize text-morado">metodos de pago</h4>
 					<div class="container">
 						<p class="text-info"><i class="fa fa-users"></i>Mercado Pago</p>
 						<p class="text-primary"><i class="fa fa-paypal"></i>Paypal</p>

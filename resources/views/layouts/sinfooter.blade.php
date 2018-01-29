@@ -26,6 +26,12 @@
 
     <!-- pnotify -->
     <link href="{{ asset('plugins/pnotify/pnotify.custom.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+
+    <!-- lightbox imagen -->
+    <link href="{{ asset('plugins/lightbox/dist/ekko-lightbox.css') }}" rel="stylesheet"/>
+    
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet"> 
     
     <!-- Scripts -->
     <script>
@@ -48,8 +54,17 @@
     }
     body
     {
+        font-family: 'Alegreya', serif;
         margin: 0 0 60px;
         background-color: #fafafa;
+    }
+    .img_fondo_2{
+        background-image: url("{{ asset('img/e-commerce_2.jpg')  }}");
+        background-position: center bottom;
+    }
+    .img_fondo_3{
+        background-image: url("{{ asset('img/fondo_3.jpg')  }}");
+        background-position: center bottom;
     }
     </style>
 </head>
@@ -104,11 +119,12 @@
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
                             <li id="messages" class="a_white">
-                                <a href="#" class="a_white" id="btn-msj"> 
-                                    <i class="fa fa-info-circle"></i>
-                                    <span class="badge_personal">
-                                        {{ $preguntas }}
-                                    </span>
+                                <a href="#" class="a_white"> 
+                                    <i class="fa fa-envelope-o">
+                                        <span class="badge" style="font-size: 9px; background-color: #7E0404; margin-bottom: 8px;">
+                                            {{ $preguntas }}
+                                        </span>
+                                    </i>
                                 </a>
                             </li>
                             <li class="dropdown a_white">
@@ -143,31 +159,21 @@
     </div>
     
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+    
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
     <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
     <script src="{{ asset('plugins/star_rating/dist/star-rating.min.js') }}"></script>
     <script src="{{ asset('plugins/pnotify/pnotify.custom.min.js') }}"></script>
-    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> -->
-    <!-- <script src="{{ asset('plugins/notification_menu/js/jquery-ui-1.8.14.custom.min.js') }}"></script>
-    <script src="{{ asset('plugins/notification_menu/js/ttw-notification-menu.min.js') }}"></script>
-    <script>
-        var notifications = new $.ttwNotificationMenu({
-              colors:['#f56c7e', '#fec151', '#7ad2f4']
-        }); 
+    <script src="{{ asset('plugins/lightbox/dist/ekko-lightbox.js') }}"></script>
 
-        notifications.initMenu({
-            messages:'#messages'
-        });
-
-        notifications.createNotification({ message:'This is a notification', category:'messages'});
-        notifications.createNotification({ message:'This is a notification 2', category:'messages'});
-
-        // notifications.getNotifications('messages', 'unread');
-    </script> -->
     @yield('script')
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox();
+        });
+    </script>
     
 </body>
 </html>

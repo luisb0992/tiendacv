@@ -1,7 +1,7 @@
 @extends('layouts.sinfooter')
 @section('content')
 @if(count($tiendas) > 0)
-<div class="jumbotron jumbotron-red">
+<div class="jumbotron jumbotron-white">
 	<div class="container">
 		@include('partials.message')
 		@foreach($tiendas as $tienda)
@@ -48,23 +48,25 @@
 		    <hr>
 		</h3>
 		@foreach($productos as $producto)
-				<div class="row well well-sm" style="margin-bottom: 0">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-10 text-left" style="border-bottom: 1px solid #8133B7">
+				<div class="row" style="margin-bottom: 0; padding: 1em;">
+					<div class="col-sm-12 text-left" style="border-bottom: 1px solid #E0E0E0">
 						<h5 class="text-uppercase">
 							<span>{{ $producto->titulo }}</span>
 						</h5>
 					</div>
-					<div class="col-sm-2" style="border-right: 1px solid #8133B7;">
+					<div class="col-sm-1 padding_top_sep" style="border-right: 1px solid #E0E0E0;">
 						
 							@if($producto->extension)
+								<a href="{{ url("/productos/images/$producto->id.$producto->extension") }}" data-toggle="lightbox" data-max-width="600">
+
 								<img src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
-								alt="imagen" class="img-responsive" width="80">
+								alt="imagen" class="img-responsive" width="80" >
+								</a>
 							@else
 								<img src="{{ asset('img/sin_imagen.png') }}" width="50" alt="imagen" class="img-producto img-responsive">
 							@endif
 					</div>
-					<div class="col-sm-10 text-left padding_top_sep">
+					<div class="col-sm-11 text-left padding_top_sep">
 						<ul class="list-unstyled nav-pills">
 							<li class="dropdown">
 	                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

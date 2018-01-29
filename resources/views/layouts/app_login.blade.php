@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AuraShop') }}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/estilos_propios.css') }}">
@@ -17,7 +17,7 @@
 
     <!-- Datepicker Files -->
     <link rel="stylesheet" href="{{asset('plugins/jquery_datepicker/jquery-ui.css')}}">
-
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet"> 
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -28,6 +28,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <style type="text/css" media="screen">
+
     .navbar{
         margin-bottom: 0px;
     }
@@ -38,13 +39,18 @@
         min-width: 100%;
     }
     body
-    {
+    {   
         margin: 0 0 0px;
-        background-color: #fafafa;
+        background-color: #eee;
+        font-family: 'Alegreya', serif;
+    }
+    .img_fondo{
+        background-image: url("{{ asset('img/e-commerce_1.jpg')  }}");
+        background-position: center left;
     }
     </style>
 </head>
-<body class="jumbotron-gris-medio">
+<body class="">
     <div id="app">
         <nav class="navbar navbar-morado navbar-static-top">
             <div class="container">
@@ -60,7 +66,8 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand a_white" href="{{ url('/home') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <i class="fa fa-shopping-basket"></i>
+                        {{ config('app.name', 'AuraShop') }}
                     </a>
                 </div>
 
@@ -74,8 +81,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li class="a_white"><a class="a_white" href="{{ route('login') }}">Login</a></li>
-                            <li class="a_white"><a class="a_white" href="{{ route('register') }}">Register</a></li>
+                            <li class="a_white">
+                                <a class="a_white" href="{{ route('register') }}">
+                                    <i class="fa fa-arrow-circle-right"></i> Registro
+                                </a>
+                            </li>
                         @else
                             <li class="dropdown a_white">
                                 <a href="#" class="dropdown-toggle a_white" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -103,7 +113,7 @@
         </nav>
 
         @yield('content')
-        @include('layouts.footer')
+        <!-- @include('layouts.footer') -->
     </div>
 
     <!-- Scripts -->

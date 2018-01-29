@@ -1,10 +1,10 @@
 @extends('layouts.sinfooter')
 
 @section('content')
-<div class="jumbotron jumbotron-purple">
+<div class="jumbotron img_fondo_2">
     <div class="container">
         <h1 class="text-capitalize">Bienvenido {{ Auth::user()->name }}!</h1>
-        <p class="body_personal">Tienda Comercial te permite crear una tienda virtual para que puedas vender tus articulos de forma segura y sin costo alguno. 
+        <p>Tienda Comercial te permite crear una tienda virtual para que puedas vender tus articulos de forma segura y sin costo alguno. 
         Tambien puedes indagar por el catalago de productos que tenemos disponible para ti.</p>
         @if($usertienda > 0)
             <p>
@@ -20,37 +20,33 @@
         @endif
     </div>
 </div>
-<div class="jumbotron-gris-claro">
+<div class="jumbotron-gris-medio">
     <div class="container white">
         <h2 class="h1_padding">Nuevos Productos <span class="text-danger">*</span></h2>
-        <div class="">
+        <div class="row">
 			@foreach($productos as $producto)
-            <div class="col-sm-3 col-md-3 col-xs-12">
-                    <!-- <div class="text-lowercase">
-                        <div class="">
-                            <a href="{{ url('/productos/'.$producto->id) }}" 
-                            class="btn btn-link">
-                            <span class="text-morado" style="font-size: 14px;">
-                                <i class="fa fa-eye"></i> <strong><em>{{ $producto->titulo }}</em></strong>
-                            </span>
-                            </a>
-                        </div>    
-                    </div> -->
+            <div class="col-sm-4 col-xs-12">
                     <div class="row well well-sm" style="border: 1px solid #8133B7; margin: 1px;">
-                        <div class="col-md-4 div-padding" align="center">
+                        <div class="col-md-4 div-padding" align="center" style="max-width: 20%; max-height: 20%;">
                             @if($producto->extension)
                                 <a href="{{ url('/productos/'.$producto->id) }}" data-toggle="tooltip" data-placement="top" title="{{ $producto->titulo }}">
-                                    <img height="10px" src="{{ url("/productos/images/$producto->id.$producto->extension") }}" alt="imagen" class="img-responsive">
+                                    <img src="{{ url("/productos/images/$producto->id.$producto->extension") }}" alt="imagen" class="img-responsive">
                                 </a>
                             @else
                                 <img src="{{ asset('img/sin_imagen.png') }}" alt="imagen" class="img-responsive" width="50">
                             @endif
                         </div>
                         <div class="col-md-8 div-padding">
-                            <p><span class="text-danger">Bsf:</span> {{ $producto->precio_bolivar }} </p>
-                            <p><span class="text-primary">USD:</span> {{ $producto->precio_dolar }} </p>
+                            <p>
+                                <span class="h4 text-danger">Bsf: 
+                                {{ $producto->precio_bolivar }} </span>
+                            </p>
+                            <p>
+                                <span class="h4 text-primary">USD: 
+                                {{ $producto->precio_dolar }} </span>
+                            </p>
                         </div>
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-sm-12">
                             @if($producto->user->id == Auth::user()->id)
 
                             @else

@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         App\Providers\CarritoProvider::class,
+        App\Providers\PreguntaProvider::class,
 
         /*
          * Application Service Providers...

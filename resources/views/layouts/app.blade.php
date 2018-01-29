@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'AuraShop') }}</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/estilos_propios.css') }}">
@@ -79,7 +79,7 @@
                         @else
                         <a class="navbar-brand a_white" href="{{ url('/') }}">
                             <i class="fa fa-"></i>
-                            {{ config('app.name', 'Tienda Comercial') }}
+                            {{ config('app.name', 'AuraShop') }}
                         </a>
                         @endif
                     </div>
@@ -99,11 +99,12 @@
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
                             <li id="messages" class="a_white">
-                                <a href="#" class="a_white" id="btn-msj"> 
-                                    <i class="fa fa-info-circle"></i>
-                                    <span class="badge_personal">
-                                        {{ $preguntas }}
-                                    </span>
+                                <a href="#" class="a_white"> 
+                                    <i class="fa fa-envelope-o">
+                                        <span class="badge" style="font-size: 9px; background-color: #7E0404; margin-bottom: 8px;">
+                                            {{ $preguntas }}
+                                        </span>
+                                    </i>
                                 </a>
                             </li>
                             <li class="dropdown a_white">
