@@ -1,14 +1,14 @@
 @extends('layouts.sinfooter')
 @section('content')
 @if($producto)
-	<div class="jumbotron jumbotron-gris-claro img_fondo_3" >
+	<div class="jumbotron jumbotron-gris-claro img_fondo_3">
 		<div class="container">
-			<h2 style="color: #fefefe;">{{ $producto->titulo }}</h2>
+			<h2 style="color: #0e0e0e;">{{ $producto->titulo }}</h2>
 			<div class="col-sm-8">
 				<hr>
 				@if($producto->extension)
 					<a href="{{ url("/productos/images/$producto->id.$producto->extension") }}" data-toggle="lightbox" data-gallery="example-gallery">
-						<img style="max-width: 40%; max-height: 40%;" src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
+						<img style="max-width: 40%; max-height: 50%;" src="{{ url("/productos/images/$producto->id.$producto->extension") }}" 
 					class="img-rounded center-block img-responsive">
 					</a>
 				@else
@@ -17,8 +17,7 @@
 			</div>
 			<div class="col-sm-4 col-md-4">
 				<h2>&nbsp;</h2>
-				<hr>
-				<div class="container white box-data">
+				<div class="container white box-	data">
 					<h4 class="text-capitalize text-morado">
 						Precio
 					</h4>
@@ -67,12 +66,13 @@
 					<strong class="badge_personal_2">({{ $count_coment }})</strong> 
 				</span>
 				<span style="color:#CACACA;">|</span> 
+				<!-- estructura para el comentario -->
 				@if($producto->user->id != Auth::user()->id)
-				<small>
+				<!-- <small>
 					<a href="#comentario" class="btn-link" data-toggle="modal" data-target="#comentario" role="button">
 						<i class="fa fa-plus-square"></i> Nuevo
 					</a>
-				</small>
+				</small> -->
 				@include('partials.reload')
 				@include('comentarios.modal_comentario')
 				@endif
@@ -121,11 +121,12 @@
 		</div>
 	</div>
 @else
-	<div class="jumbotron jumbotron-purple">
+	<div class="jumbotron img_fondo_3">
 		<div class="container">
 			<div class="alert alert-info">
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
-				<h2>Ooops! este producto no existe o fue vendido :/</h2>
+				<p><b>Ooops!</b></p>
+				<p>Este producto no existe o fue vendido <i class="fa fa-exclamation"></i> <a href="{{ url('/home') }}" class="btn-link"><span class="text-morado">Volver al Dashboard</span></a></p>
 			</div>
 		</div>
 	</div>

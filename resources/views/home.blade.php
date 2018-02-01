@@ -1,9 +1,9 @@
 @extends('layouts.sinfooter')
 
 @section('content')
-<div class="jumbotron img_fondo_2">
+<div class="jumbotron img_fondo_3">
     <div class="container">
-        <h1 class="text-capitalize">Bienvenido {{ Auth::user()->name }}!</h1>
+        <h1 class="text-capitalize">Bienvenido(a) {{ Auth::user()->name }}!</h1>
         <p>Tienda Comercial te permite crear una tienda virtual para que puedas vender tus articulos de forma segura y sin costo alguno. 
         Tambien puedes indagar por el catalago de productos que tenemos disponible para ti.</p>
         @if($usertienda > 0)
@@ -27,6 +27,11 @@
 			@foreach($productos as $producto)
             <div class="col-sm-4 col-xs-12">
                     <div class="row well well-sm" style="border: 1px solid #8133B7; margin: 1px;">
+                        <div class="col-sm-12" style="font-size: 10px;">
+                            <a href="{{ url('/productos/'.$producto->id) }}" class="text-morado">
+                                {{ $producto->titulo }}
+                            </a>
+                        </div>
                         <div class="col-md-4 div-padding" align="center" style="max-width: 20%; max-height: 20%;">
                             @if($producto->extension)
                                 <a href="{{ url('/productos/'.$producto->id) }}" data-toggle="tooltip" data-placement="top" title="{{ $producto->titulo }}">

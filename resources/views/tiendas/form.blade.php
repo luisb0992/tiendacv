@@ -12,7 +12,7 @@
 		<div class="col-sm-1">
 			<label for="Documento">Documento</label>
 			<select name="letra" class="form-control" required="">
-				<option value="">Seleccione...</option>
+				<option value=""></option>
 				<option value="J">J</option>
 				<option value="G">G</option>
 				<option value="V">V</option>

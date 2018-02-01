@@ -61,9 +61,15 @@
     .img_fondo_2{
         background-image: url("{{ asset('img/e-commerce_2.jpg')  }}");
         background-position: center bottom;
+        /*background-repeat: repeat;*/
+        /*background-size: 100%;*/
     }
     .img_fondo_3{
-        background-image: url("{{ asset('img/fondo_3.jpg')  }}");
+        background-image: url("{{ asset('img/fondo5.jpg')  }}");
+        background-position: center bottom;
+    }
+    .img_fondo_preguntas{
+        background-image: url("{{ asset('img/fondo5.jpg')  }}");
         background-position: center bottom;
     }
     </style>
@@ -83,19 +89,13 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <div class="n">
+                    <div class="">
                         @if(Auth::check())
-                        <a href="{{ url('/carrito') }}" class="navbar-brand a_white">
-                            <i class="fa fa-shopping-cart"></i>
-                            Mi carrito 
-                            <span class="badge_personal">
-                                {{ $carrito->productoSize() }}
-                            </span>
+                        <a class="navbar-brand a_white" href="{{ url('/home') }}">
+                            <i class="fa fa-"></i>
+                            {{ config('app.name', 'AuraShop') }}
                         </a>
                         <a href="" class="navbar-brand a_white">|</a>
-                        <a href="{{ url('/home') }}" class="navbar-brand a_white">
-                            <i class="fa fa-dashboard"></i> Dashboard
-                        </a>
                         @else
                         <a class="navbar-brand a_white" href="{{ url('/') }}">
                             <i class="fa fa-"></i>
@@ -118,10 +118,19 @@
                             <li class="a_white"><a class="a_white" href="{{ route('login') }}">Login</a></li>
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
-                            <li id="messages" class="a_white">
-                                <a href="#" class="a_white"> 
+                            <li class="a_white" style="padding-left: 12px;">
+                                <a href="{{ url('/carrito') }}" class="navbar-brand a_white">
+                                    <i class="fa fa-shopping-cart">
+                                        <span class="badge" style="font-size: 10px; background-color: #1BD91B; margin-bottom: 8px;">
+                                            {{ $carrito->productoSize() }}
+                                        </span>
+                                    </i>
+                                </a>
+                            </li>
+                            <li class="a_white">
+                                <a href="{{ url('preguntas') }}" class="a_white"> 
                                     <i class="fa fa-envelope-o">
-                                        <span class="badge" style="font-size: 9px; background-color: #7E0404; margin-bottom: 8px;">
+                                        <span class="badge" style="font-size: 10px; background-color: #7E0404; margin-bottom: 8px;">
                                             {{ $preguntas }}
                                         </span>
                                     </i>

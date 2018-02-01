@@ -277,6 +277,11 @@ a:hover{
         border-bottom-color: rgb(132, 51, 183);
         border-left-color: rgb(132, 51, 183);
 }
+.text-morado:hover{
+	text-decoration: none;
+	color: #894DB2;
+	border-color: #894DB2;
+}
 .footer_tienda{
 	color: #fff;
     background-color: #2D2828;

@@ -4,7 +4,7 @@
 <div class="jumbotron div-height img_fondo">
     <div class="container">
         <!-- Bienvenida -->
-        <div class="col-sm-8 text-justify">
+        <div class="col-sm-8 text-justify" style="color: #FEFEFE;">
             <h2>Bienvenido!</h2>
             <p>
                 <b>Tienda Comercial</b> 

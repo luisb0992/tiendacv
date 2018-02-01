@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pregunta;
+use App\Producto;
+use App\Tienda;
 
 class PreguntasController extends Controller
 {
@@ -14,7 +16,13 @@ class PreguntasController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::where("user_id", \Auth::user()->id)->get(['id']);
+        $questions = Pregunta::whereIn("producto_id", $productos)
+                     ->where('respuesta', null)->get();
+        // dd($preguntas);
+        return view('preguntas.index',[
+            'questions' => $questions    
+        ]);
     }
 
     /**
@@ -72,13 +80,6 @@ class PreguntasController extends Controller
     public function edit($id)
     {
             $preguntas = Pregunta::with('user')->where("producto_id",$id)->where("respuesta", null)->get();
-            // $data = array();
-            // foreach ($preguntas as $pre) {
-            //     $data [] = $pre->user->name." ".$pre->user->ape;
-            //     $data [] = $pre->pregunta;
-            //     $data [] = date('d-m-Y',strtotime(str_replace('/', '-', $pre->created_at)));
-            // }
-            // $preguntas = $data;
 
             return response()->json($preguntas);
     }
@@ -91,13 +92,19 @@ class PreguntasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->all());
 
         $respuesta = Pregunta::findOrFail($id);
         $respuesta->respuesta = $request->respuesta;
         $respuesta->save();
 
-        return response()->json($respuesta);
+        $productos = Producto::where("user_id", \Auth::user()->id)->get(['id']);
+        $count = Pregunta::whereIn("producto_id", $productos)
+                     ->where('respuesta', null)->count();
+        
+        return response()->json([
+            "respuesta" => $respuesta, 
+            "count" => $count
+        ]);
 
     }
 

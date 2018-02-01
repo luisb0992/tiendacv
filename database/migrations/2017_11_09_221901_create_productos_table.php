@@ -18,9 +18,10 @@ class CreateProductosTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('titulo');
             $table->integer('categoria_id')->unsigned();
+            $table->integer('cantidad');
             $table->text('descripcion');
-            $table->decimal('precio_bolivar',9,2);//centavos
-            $table->decimal('precio_dolar',9,2);//centavos 
+            $table->decimal('precio_bolivar',12,2);//centavos
+            $table->decimal('precio_dolar',12,2);//centavos 
             $table->string('extension')->nullable();
 
             $table->foreign("categoria_id")->references("id")->on("categorias");

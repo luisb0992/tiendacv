@@ -46,7 +46,6 @@ class ProductosController extends Controller
     public function store(CreateProductoRequest $request)
     {
 
-        
         $productos = new Producto;
         
         $hasfile = $request->hasFile('imagen') && $request->imagen->isValid();
@@ -54,6 +53,7 @@ class ProductosController extends Controller
         $productos->titulo = strtoupper($request->titulo);
         $productos->categoria_id = $request->categoria_id;
         $productos->descripcion = $request->descripcion;
+        $productos->cantidad = $request->cantidad;
         $productos->precio_bolivar = $request->precio_bolivar;
         $productos->precio_dolar = $request->precio_dolar;
         //$productos->extension = $request->extension;

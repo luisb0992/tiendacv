@@ -1,31 +1,30 @@
 @extends('layouts.sinfooter')
 @section('content')
 @if(count($tiendas) > 0)
-<div class="jumbotron jumbotron-white">
+<div class="jumbotron img_fondo_3">
 	<div class="container">
 		@include('partials.message')
 		@foreach($tiendas as $tienda)
-		<div class="col-sm-9 col-xs-12">
-		    <h2 class="text-capitalize"> <i class="fa fa-home"></i> {{ $tienda->titulo }}</h2>
+		<div class="col-sm-12 col-xs-12">
+		    <span class="text-capitalize"> 
+		    	<span class="h2">
+		    		<i class="fa fa-home"></i> {{ $tienda->titulo }} |
+		    	</span>
+		    	<a href="#modal_edit" class="btn-link" data-toggle="modal" data-target="#modal_edit" role="button">
+					<span class="text-warning">
+						<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+		    		</span>
+	    		</a>
+	    		@include('partials.modal_edit_tienda',['tiendas' => $tiendas])
+		    </span>
 		    <p>
 		    	<small><i>{{ $tienda->sub_titulo }}</i></small><br>
 		    	<small>{{ $tienda->letra }} - {{ $tienda->RIF }}</small>
 		    </p>
 		</div>
-		<div class="col-sm-3 col-xs-12 text-peque">
-		    <h2 class="text-capitalize text-center">Configuracion</h2>
-	    	<div class="text-center">
-	    		<a href="#modal_edit" class="btn btn-warning btn-lg btn-block"
-	    		data-toggle="modal" data-target="#modal_edit" role="button">
-					<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-		    		Editar
-	    		</a>
-	    	</div>
-	    	@include('partials.modal_edit_tienda',['tiendas' => $tiendas])
-		    	<!-- <p>
-		    		@include('tiendas.delete',['tiendas' => $tiendas])
-		    	</p> -->
-		</div>
+    	<!-- <p>
+    		@include('tiendas.delete',['tiendas' => $tiendas])
+    	</p> -->
 	    <hr>
 	    @endforeach
 	</div>
@@ -55,7 +54,6 @@
 						</h5>
 					</div>
 					<div class="col-sm-1 padding_top_sep" style="border-right: 1px solid #E0E0E0;">
-						
 							@if($producto->extension)
 								<a href="{{ url("/productos/images/$producto->id.$producto->extension") }}" data-toggle="lightbox" data-max-width="600">
 
@@ -114,6 +112,13 @@
 			                    </span>
 	                        </li>
 	                    </ul>
+	                    <br>
+	                    <div style="border-bottom: solid 1px #182EB4;" class="div-padding col-sm-2">
+	                    	<span class="text-center" style="font-size: 2em; color: #182EB4;">
+	                    		{{ $producto->cantidad }}
+	                    	</span>
+	                    	<span>U/d </span>
+                    	</div>
 					</div>
 				</div>
 		@endforeach

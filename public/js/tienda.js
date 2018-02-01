@@ -47,6 +47,7 @@ function RespuestaPro(btn_res){
 	var token = $("#token").val();
 	var respuesta = $(".text_res").val();
 	$("#btn_res").text('Espere...');
+	$("#reload_2").fadeIn(100 ,'linear');
 
 	$.ajax({
 		url: ruta,
@@ -56,10 +57,11 @@ function RespuestaPro(btn_res){
 		data: {respuesta: respuesta},
 	})
 	.done(function(data) {
+		$("#reload_2").fadeOut(100 ,'linear');
 		$("#msj_res").fadeIn('slow/400/fast').fadeOut(5000);
 		// $("#form_res_"+btn_res.value+"").hide(2000);
 		$("#form_res_"+btn_res.value+"").remove();
-		$("#btn_res").text('responder');	
+		$("#btn_res").text('Responder');
 		console.log("success");
 	})
 	.fail(function() {

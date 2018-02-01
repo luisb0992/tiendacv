@@ -48,6 +48,10 @@
         background-image: url("{{ asset('img/e-commerce_1.jpg')  }}");
         background-position: center left;
     }
+    .img_fondo_2{
+        background-image: url("{{ asset('img/e-commerce_2.jpg')  }}");
+        background-position: center top;
+    }
     </style>
 </head>
 <body class="">

@@ -1,7 +1,7 @@
 @extends('layouts.app_login')
 
 @section('content')
-<div class="jumbotron jumbotron-purple div-height">
+<div class="jumbotron img_fondo_2 div-height">
     <div class="container">
         <h1 class="text-center">Registrate para que puedas vender o comprar productos</h1>
     </div>
