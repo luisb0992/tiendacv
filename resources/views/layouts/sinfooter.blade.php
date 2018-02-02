@@ -92,14 +92,11 @@
                     <div class="">
                         @if(Auth::check())
                         <a class="navbar-brand a_white" href="{{ url('/home') }}">
-                            <i class="fa fa-"></i>
                             {{ config('app.name', 'AuraShop') }}
                         </a>
-                        <a href="" class="navbar-brand a_white">|</a>
                         @else
                         <a class="navbar-brand a_white" href="{{ url('/') }}">
-                            <i class="fa fa-"></i>
-                            {{ config('app.name', 'Tienda Comercial') }}
+                            {{ config('app.name', 'AuraShop') }}
                         </a>
                         @endif
                     </div>
@@ -107,8 +104,15 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav navbar-form">
+                        <li>
+                            <div class="form-group">
+                                <input type="text" class="form-control">
+                                <button type="button" class="btn col-sx-12">
+                                    <i class="fa fa-search text-morado"></i>
+                                </button>    
+                            </div>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

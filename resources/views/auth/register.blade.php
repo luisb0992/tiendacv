@@ -1,16 +1,16 @@
 @extends('layouts.app_login')
 
 @section('content')
-<div class="jumbotron img_fondo_2 div-height">
+<div class="jumbotron img_fondo_registro div-height">
     <div class="container">
-        <h1 class="text-center">Registrate para que puedas vender o comprar productos</h1>
+        <h1 class="text-center" style="color:#fefefe;">Registrate para que puedas vender o comprar productos</h1>
     </div>
 </div>
 <div class="jumbotron">
     <div class="container">
         <div class="col-md-6 col-md-offset-3 gris_claro registro-flotante">
             <h3 class="text-capitalize col-sm-12 text-center">
-                Ya tienes una cuenta? <a href="{{ route('login') }}" class="text-morado">Inicia Sesion</a>
+                ¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="text-morado">Inicia Sesion</a>
             </h3>
             <hr>
             <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">

@@ -1,7 +1,7 @@
 @extends('layouts.app_login')
 
 @section('content')
-<div class="jumbotron div-height img_fondo">
+<div class="jumbotron div-height img_fondo_login">
     <div class="container">
         <!-- Bienvenida -->
         <div class="col-sm-8 text-justify" style="color: #FEFEFE;">
@@ -26,7 +26,7 @@
                 <h3 class="text-capitalize col-sm-12 text-center">¿No Posees Una Cuenta? 
                 <a href="{{ route('register') }}" class="text-morado">Registrate</a></h3>
                  
-                <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}" id="form_login">
                     {{ csrf_field() }}
                     <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
 
@@ -57,10 +57,14 @@
                     <div class="">
                         <div class="col-md-12">
                             <div class="checkbox">
-                                <label>
+                                <label class="col-sm-4">
                                     <input type="checkbox" name="remember" class="" {{ old('remember') ? 'checked' : '' }}>
                                     Recordar
                                 </label>
+                                <span class="text-center col-sm-4" id="reload" style="display: none;">
+                                    <i class="fa fa-spinner fa-pulse fa-2x fa-fw text-morado"></i>
+                                </span>
+                                <span class="col-sm-4"></span>
                             </div>
                         </div>
                     </div>
@@ -71,7 +75,7 @@
                             </a>
                         </div>
                         <div class="col-md-12">
-                            <button type="submit" class="btn-morado btn-lg btn-block">
+                            <button type="submit" class="btn-morado btn-lg btn-block" id="btn_login">
                                 Login
                             </button>
                             <br>
@@ -81,4 +85,12 @@
             </div>
     </div>
 </div>                 
+@endsection
+@section('script')
+    <script>
+        $("#form_login").submit(function(event) {
+            $("#btn_login").text('Espere...');
+            $("#reload").fadeIn('slow/400/fast');
+        });
+    </script>
 @endsection
