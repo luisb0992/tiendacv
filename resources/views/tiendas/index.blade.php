@@ -36,6 +36,7 @@
 			<a href="{{ url('/productos/create') }}" class="btn btn-morado a_white">
 		    	<i class="fa fa-plus a_white" aria-hidden="true"></i> Nuevo
 		    </a>
+		    <i><small><i class="fa fa-exclamation-circle text-info"></i> No veras tu productos en el dashboard</small></i>
 		    @if($productos->count() > 0)
 		    	<div class="pull-right">
 		    	<span class="badge_personal_preguntas_2" style="position: absolute;">

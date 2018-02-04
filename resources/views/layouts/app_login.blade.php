@@ -44,11 +44,11 @@
         background-color: #eee;
         font-family: 'Alegreya', serif;
     }
-    .img_fondo{
+    .img_fondo_login{
         background-image: url("{{ asset('img/e-commerce_1.jpg')  }}");
-        background-position: center left;
+        background-position: center right;
     }
-    .img_fondo_2{
+    .img_fondo_registro{
         background-image: url("{{ asset('img/e-commerce_2.jpg')  }}");
         background-position: center top;
     }
@@ -117,14 +117,12 @@
         </nav>
 
         @yield('content')
-        <!-- @include('layouts.footer') -->
     </div>
 
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
-    <!-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> -->
-    <script src="{{ asset('plugins/jquery_datepicker/jquery-ui.js') }}"></script>
+    @yield('script')
 </body>
 </html>

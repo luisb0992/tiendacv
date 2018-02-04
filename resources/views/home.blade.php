@@ -25,23 +25,27 @@
         <h2 class="h1_padding">Nuevos Productos <span class="text-danger">*</span></h2>
         <div class="row">
 			@foreach($productos as $producto)
-            <div class="col-sm-4 col-xs-12">
-                    <div class="row well well-sm" style="border: 1px solid #8133B7; margin: 1px;">
+            <div class="col-sm-3 col-xs-12 box-data-1">
+                    <div class="row well well-sm" style="margin: 1px;">
+                        <div class="col-sm-12 div-padding" align="center">
+                            <a href="{{ url('/productos/'.$producto->id) }}" data-toggle="tooltip" data-placement="top" title="{{ $producto->titulo }}">
+                                <img style="height: 200px;"
+
+                                    @if($producto->extension)
+                                        src="{{ url("/productos/images/$producto->id.$producto->extension") }}"
+                                    @else
+                                        src="{{ asset('img/sin_imagen.png') }}"
+                                    @endif
+                                
+                                alt="imagen" class="img-responsive">
+                            </a>
+                        </div>
                         <div class="col-sm-12" style="font-size: 10px;">
                             <a href="{{ url('/productos/'.$producto->id) }}" class="text-morado">
                                 {{ $producto->titulo }}
                             </a>
                         </div>
-                        <div class="col-md-4 div-padding" align="center" style="max-width: 20%; max-height: 20%;">
-                            @if($producto->extension)
-                                <a href="{{ url('/productos/'.$producto->id) }}" data-toggle="tooltip" data-placement="top" title="{{ $producto->titulo }}">
-                                    <img src="{{ url("/productos/images/$producto->id.$producto->extension") }}" alt="imagen" class="img-responsive">
-                                </a>
-                            @else
-                                <img src="{{ asset('img/sin_imagen.png') }}" alt="imagen" class="img-responsive" width="50">
-                            @endif
-                        </div>
-                        <div class="col-md-8 div-padding">
+                        <div class="col-sm-12 div-padding">
                             <p>
                                 <span class="h4 text-danger">Bsf: 
                                 {{ $producto->precio_bolivar }} </span>

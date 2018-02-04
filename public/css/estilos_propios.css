@@ -3,6 +3,25 @@
 	-moz-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
 	box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
 }
+.box-data-1:hover{
+	-webkit-transition:all .2s ease-in-out;
+	transition:all .2s ease-in-out;
+	display:inline-block;
+	-webkit-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+	-moz-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+	box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);	
+}
+.box-data-precio:hover{
+	background-color: #BDBDBD;
+	-webkit-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+	-moz-box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);
+	box-shadow: -1px 0px 35px -5px rgba(0,0,0,0.53);	
+}
+.box-data-picture:hover{
+	-webkit-transition:all .2s ease-in-out;
+	transition:all .2s ease-in-out;
+	display:inline-block;
+}
 a:hover{
 	text-decoration: none;
 	color: #fff;
