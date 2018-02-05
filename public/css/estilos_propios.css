@@ -86,6 +86,9 @@ a:hover{
 .div-separator-right{
 	border-right: solid 1px #ccc;
 }
+.div-separator-left{
+	border-left: solid 1px #ccc;
+}
 .td-color{
 	background-color: #DBDBDB;
 }

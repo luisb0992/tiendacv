@@ -25,11 +25,11 @@
         <h2 class="h1_padding">Nuevos Productos <span class="text-danger">*</span></h2>
         <div class="row">
 			@foreach($productos as $producto)
-            <div class="col-sm-3 col-xs-12 box-data-1">
-                    <div class="row well well-sm" style="margin: 1px;">
-                        <div class="col-sm-12 div-padding" align="center">
+            <div class="col-sm-3 box-data-1">
+                    <div class="" style="margin: 1px; border: solid 0.2px #eee;">
+                        <div class="div-padding" align="center">
                             <a href="{{ url('/productos/'.$producto->id) }}" data-toggle="tooltip" data-placement="top" title="{{ $producto->titulo }}">
-                                <img style="height: 200px;"
+                                <img style="height: 180px;"
 
                                     @if($producto->extension)
                                         src="{{ url("/productos/images/$producto->id.$producto->extension") }}"
@@ -40,12 +40,15 @@
                                 alt="imagen" class="img-responsive">
                             </a>
                         </div>
-                        <div class="col-sm-12" style="font-size: 10px;">
+                        <div style="font-size: 10px;">
+                            @if($producto->user->id == Auth::user()->id)
+                                <i class="fa fa-user text-success"></i>
+                            @endif
                             <a href="{{ url('/productos/'.$producto->id) }}" class="text-morado">
                                 {{ $producto->titulo }}
                             </a>
                         </div>
-                        <div class="col-sm-12 div-padding">
+                        <div class="div-padding">
                             <p>
                                 <span class="h4 text-danger">Bsf: 
                                 {{ $producto->precio_bolivar }} </span>
@@ -55,13 +58,13 @@
                                 {{ $producto->precio_dolar }} </span>
                             </p>
                         </div>
-                        <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                             @if($producto->user->id == Auth::user()->id)
 
                             @else
                                 <p class="">@include('cp.form',['producto' => $producto])</p>
                             @endif
-                        </div>
+                        </div> -->
                     </div>
                     <br>
             </div>
@@ -91,13 +94,5 @@
         }
         // alert( "se tiro tres" );
     });
-    // PNotify.prototype.options.styling = "bootstrap3";
-
-    // var stack_topleft = {"dir1": "down", "dir2": "right", "push": "top"};
-    // var stack_bottomleft = {"dir1": "right", "dir2": "up", "push": "top"};
-    // var stack_modal = {"dir1": "down", "dir2": "right", "push": "top", "modal": true, "overlay_close": true};
-    // var stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1": 0, "spacing2": 0};
-    // var stack_bar_bottom = {"dir1": "up", "dir2": "right", "spacing1": 0, "spacing2": 0};
-    // var stack_context = {"dir1": "down", "dir2": "left", "context": $("#stack-context")};
 </script>
 @endsection

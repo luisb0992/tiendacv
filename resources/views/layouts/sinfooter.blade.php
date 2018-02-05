@@ -104,16 +104,13 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-form">
-                        <li>
-                            <div class="form-group">
-                                <input type="text" class="form-control">
-                                <button type="button" class="btn col-sx-12">
-                                    <i class="fa fa-search text-morado"></i>
-                                </button>    
-                            </div>
-                        </li>
-                    </ul>
+                    <form class="navbar-form navbar-left" role="search" action="{{ url('busqueda') }}" method="post">
+                    {{ csrf_field() }}
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="busqueda" name="search">
+                      </div>
+                      <button type="submit" class="btn btn-default"><i class="fa fa-search text-morado"></i></button>
+                    </form>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

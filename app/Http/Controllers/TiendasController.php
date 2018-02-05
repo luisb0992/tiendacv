@@ -23,11 +23,13 @@ class TiendasController extends Controller
         $productos = Producto::where('user_id','=',$user_id)->get();
         $tiendas = Tienda::where('user_id','=',$user_id)->get();
         $preguntas = Producto::total_preguntas();
-        // dd($preguntas);
+        $respuestas = Producto::total_respuestas();
+        // dd($respuestas);
         return view('tiendas.index',[
             'tiendas' => $tiendas,
             'productos' => $productos,
-            'total_preguntas' => $preguntas
+            'total_preguntas' => $preguntas,
+            'total_respuestas' => $respuestas
         ]);
     }
 

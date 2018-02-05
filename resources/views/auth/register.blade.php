@@ -3,7 +3,7 @@
 @section('content')
 <div class="jumbotron img_fondo_registro div-height">
     <div class="container">
-        <h1 class="text-center" style="color:#fefefe;">Registrate para que puedas vender o comprar productos</h1>
+        <h1 class="text-center" style="color:#1D1D1D;">Registrate para que puedas vender o comprar productos</h1>
     </div>
 </div>
 <div class="jumbotron">

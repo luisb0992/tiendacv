@@ -50,6 +50,13 @@ class Producto extends Model
         return $preguntas = Pregunta::whereIn("producto_id", $productos)->where('respuesta', null)->count();
     }
 
+    public static function total_respuestas(){
+        $user = \Auth::user()->id;
+        $productos = Producto::where("user_id", $user)->get(['id']);
+        return Pregunta::whereIn("producto_id", $productos)
+                         ->where('respuesta','<>', null)->get();
+    }
+
     public function scopeLatest($query){
 		return $query->orderBy("id", "desc");
 	}
