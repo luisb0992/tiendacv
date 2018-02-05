@@ -1,7 +1,14 @@
 @extends('layouts.sinfooter')
 @section('content')
+	<div class="jumbotron jumbotron-gris-claro img_fondo_preguntas">
+		<div class="container">
+			@include('partials.message')
+			<h2><i class="fa fa-shopping-cart text-morado"></i> Tu carrito de compras</h2>
+		</div>
+	</div>
+	<br>
 	<div class="container white">
-		<h3 class="text-capitalize text-left">Tu Carrito de Compras</h3>
+			@if($productos->count() > 0)
 			<table class="table table-striped table-responsive">
 				<tr class="text-center">
 					<td class="bg-primary">
@@ -44,7 +51,6 @@
 				</tr>
 				@endforeach
 			</table>
-			@if($productos->count() > 0)
 				<div class="col-sm-12 text-right div-footer-botonera">
 					<p class="text-capitalize text-primary">Total a cancelar</p>
 					<p>{{ $totalBSF }} BsF. <a href="" class="btn btn-danger disabled">Pagar</a></p>
