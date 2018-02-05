@@ -41,7 +41,7 @@ class Carrito extends Model
 
     //--metodo integrador de funcion que permite
     //crear una nueva session para el carrito o
-    //para mantener y saber el id de lasession del
+    //para mantener y saber el id de la session del
     //carrito de compras mediante findbysession
     public static function findOrCreateBySessionID($carrito_id){
    		if ($carrito_id) {

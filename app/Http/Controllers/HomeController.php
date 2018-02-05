@@ -32,12 +32,20 @@ class HomeController extends Controller
                      ->where('respuesta', null)
                      ->count();
         // dd($preguntas);
-        $productos = Producto::latest('id')->get();
+        $productos = Producto::orderBy('id','desc')->limit(12)->get();
         $usertienda = Tienda::where('user_id','=',\Auth::user()->id)->count();
         return view('home',[
             'usertienda' => $usertienda,
             'productos' =>$productos,
             'preguntas' =>$preguntas
         ]);
+    }
+
+    public function busqueda(Request $request){
+        $productos = Producto::where('titulo', 'like', '%' . $request->search . '%')->simplePaginate(15);
+        return view('productos.all',[
+            'productos' => $productos,
+            'palabra' => $request->search
+         ]);
     }
 }

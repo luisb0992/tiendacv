@@ -3,7 +3,7 @@
 <div class="jumbotron jumbotron-gris-claro img_fondo_preguntas">
 	<div class="container">
 		@include('partials.message')
-		<h2><i class="fa fa-envelope-o"></i> Preguntas</h2>
+		<h2><i class="fa fa-envelope-o text-morado"></i> Preguntas</h2>
 	</div>
 </div>
 <hr>

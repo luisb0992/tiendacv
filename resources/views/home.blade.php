@@ -41,6 +41,9 @@
                             </a>
                         </div>
                         <div class="col-sm-12" style="font-size: 10px;">
+                            @if($producto->user->id == Auth::user()->id)
+                                <i class="fa fa-user text-success"></i>
+                            @endif
                             <a href="{{ url('/productos/'.$producto->id) }}" class="text-morado">
                                 {{ $producto->titulo }}
                             </a>
@@ -55,13 +58,13 @@
                                 {{ $producto->precio_dolar }} </span>
                             </p>
                         </div>
-                        <div class="col-sm-12">
+                        <!-- <div class="col-sm-12">
                             @if($producto->user->id == Auth::user()->id)
 
                             @else
                                 <p class="">@include('cp.form',['producto' => $producto])</p>
                             @endif
-                        </div>
+                        </div> -->
                     </div>
                     <br>
             </div>

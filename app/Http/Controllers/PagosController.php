@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Carrito;
 use App\Paypal;
 use App\Orden;
+use App\Producto;
+use App\ProductoCarrito;
 
 class PagosController extends Controller
 {
@@ -53,6 +55,19 @@ class PagosController extends Controller
                 "carrito" => $carrito,
                 "orden" => $detalle
         ]);
+    }
+
+    public function procesarpago(Request $request)
+    {
+        // $producto = array();
+        // foreach ($request->id_producto as $id) {
+        //     $producto [] = $id;
+        // }
+        $carrito_id = \Session::get('carrito_id');
+        $carrito = Carrito::findOrCreateBySessionID($carrito_id);
+        $pc = ProductoCarrito::where('carrito_id', $carrito->id)->count();
+        // $p_dolar = Producto::whereIn('id', $pc)->get(['precio_dolar']);
+        return response()->json($carrito->productos()->get());
     }
 
     /**

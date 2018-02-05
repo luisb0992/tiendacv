@@ -1,7 +1,7 @@
 @extends('layouts.app_login')
 
 @section('content')
-<div class="jumbotron div-height img_fondo_login">
+<div class="jumbotron div-height img_fondo_login col-xs-12">
     <div class="container">
         <!-- Bienvenida -->
         <div class="col-sm-8 text-justify" style="color: #1D1D1D;">
@@ -22,7 +22,7 @@
 <div class="jumbotron">
     <div class="container">
     <!-- Iniciar session -->
-            <div class="col-sm-6 col-sm-offset-3 gris_claro login-flotante">
+            <div class="col-sm-6 col-sm-offset-3 gris_claro login-flotante" style="border-radius: 5px;">
                 <h3 class="text-capitalize col-sm-12 text-center">¿No Posees Una Cuenta? 
                 <a href="{{ route('register') }}" class="text-morado">Registrate</a></h3>
                  

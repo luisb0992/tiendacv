@@ -33,7 +33,11 @@ Route::resource('comentarios','ComentariosController',['middleware' => ['auth']]
 
 Route::resource('preguntas','PreguntasController',['middleware' => ['auth']]);
 
-Route::get('/pagos','PagosController@store');
+Route::get('/pagos','PagosController@store')->middleware('auth');
+
+Route::post('procesarpago','PagosController@procesarpago')->middleware('auth');
+
+Route::post('busqueda','HomeController@busqueda')->middleware('auth');
 
 Route::resource('compras','CarritosController',[
 	'only' => ['show'],

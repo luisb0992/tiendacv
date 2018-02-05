@@ -46,7 +46,9 @@
     }
     .img_fondo_login{
         background-image: url("{{ asset('img/e-commerce_1.jpg')  }}");
-        background-position: center right;
+        background-position: center left;
+        background-size: 180%;
+        background-repeat: no-repeat;
     }
     .img_fondo_registro{
         background-image: url("{{ asset('img/e-commerce_2.jpg')  }}");
