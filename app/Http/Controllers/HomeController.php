@@ -33,9 +33,7 @@ class HomeController extends Controller
                      ->count();
         // dd($preguntas);
         $productos = Producto::orderBy('id','desc')->limit(12)->get();
-        $usertienda = Tienda::where('user_id','=',\Auth::user()->id)->count();
         return view('home',[
-            'usertienda' => $usertienda,
             'productos' =>$productos,
             'preguntas' =>$preguntas
         ]);

@@ -41,4 +41,8 @@ class Tienda extends Model
         }
         return $subtitulo;
     }
+
+    public static function total_tiendas(){
+        return Tienda::where('user_id','=', \Auth::user()->id)->count();
+    }
 }

@@ -8,7 +8,10 @@
         Tambien puedes indagar por el catalago de productos que tenemos disponible para ti.</p>
         @if($usertienda > 0)
             <p>
-                <a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">Visitar mi Tienda</a> 
+                <a href="{{ url('/tiendas') }}" class="btn-morado btn-lg">
+                <img src="{{ asset('img/icon_venta_2.png') }}" alt="icon" width="30px">
+                    Visitar mi Tienda
+                </a> 
             </p>  
         @else
             <p class="">

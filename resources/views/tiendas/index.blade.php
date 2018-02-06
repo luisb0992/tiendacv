@@ -42,7 +42,7 @@
 			    	<span class="badge_personal_preguntas_2" style="position: absolute;">
 			    		{{ $total_respuestas->count() }}
 			    	</span>	
-		    		&nbsp;&nbsp;&nbsp; Respuestas 
+		    		&nbsp;&nbsp;&nbsp; Pregustas y respuestas
 		    		@if($total_respuestas->count() > 0)
 						<button class="btn btn-link" type="button" data-toggle="modal" data-target="#respuestas">
 							<i class="fa fa-eye"></i>

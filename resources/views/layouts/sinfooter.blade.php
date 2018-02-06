@@ -119,12 +119,20 @@
                             <li class="a_white"><a class="a_white" href="{{ route('login') }}">Login</a></li>
                             <li class="a_white"><a class="a_white" href="{{ route('register') }}">Registro</a></li>
                         @else
+                            @if($usertienda > 0)
+                            <li class="a_white">
+                                <a href="{{ url('/tiendas') }}" class="a_white" data-toggle="tooltip" title="Visita tu tienda">
+                                    <img src="{{ asset('img/icon_venta_2.png') }}" alt="icon" width="30px">
+                                </a>
+                            </li>
+                            @endif
                             <li class="a_white" style="padding-left: 12px;">
                                 <a href="{{ url('/carrito') }}" class="navbar-brand a_white">
                                     <i class="fa fa-shopping-cart">
-                                        <span class="badge" style="font-size: 10px; background-color: #1BD91B; margin-bottom: 8px;">
+                                        <span class="badge" style="font-size: 10px; background-color: #1BD91B; margin-bottom: 8px;" id="span_carrito">
                                             {{ $carrito->productoSize() }}
                                         </span>
+                                        <input type="hidden" value="{{ $carrito->productoSize() }}" id="carrito">
                                     </i>
                                 </a>
                             </li>
@@ -182,6 +190,7 @@
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
                 event.preventDefault();
                 $(this).ekkoLightbox();
+                $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
     

@@ -170,6 +170,7 @@ return [
         Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
         App\Providers\CarritoProvider::class,
         App\Providers\PreguntaProvider::class,
+        App\Providers\TiendaProvider::class,
 
         /*
          * Application Service Providers...

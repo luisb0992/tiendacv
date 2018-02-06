@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Carrito;
 use App\Paypal;
+use App\Producto;
+use App\ProductoCarrito;
 
 class CarritosController extends Controller
 {
@@ -28,12 +30,30 @@ class CarritosController extends Controller
         ]);
     }
 
-    // metodo para pagar
+    // metodo para pagar por paypal
     public function pagar(Request $request){
         $carrito_id = \Session::get('carrito_id');
         $carrito = Carrito::findOrCreateBySessionID($carrito_id);
         $paypal = new Paypal($carrito);
+
+        // ids de los productos
+        $id = ProductoCarrito::where('carrito_id', $carrito->id)
+              ->get()
+              ->groupBy('producto_id'); 
+        // cantidad de productos en el carrito
+        $count_id = $id->count();
+
+        $array = array();
+        foreach ($id as $idpro) {
+            $array [] = $idpro;
+        }  
+        dd($array, 'Productos en el carrito legalmente '.$count_id);
+
+        // datos de los productos
+        $pro = Producto::whereIn('id', $id)->get();
+
         $pago = $paypal->generate();
+
 
         return redirect($pago->getApprovalLink());
     }

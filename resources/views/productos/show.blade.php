@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-sm-4 col-md-4">
 				<h2>&nbsp;</h2>
-				<div class="container white box-	data">
+				<div class="container white box-data">
 					<h4 class="text-capitalize text-morado">
 						Precio
 					</h4>
@@ -27,7 +27,7 @@
 					</div>	
 					<h4 class="text-capitalize text-morado">metodos de pago</h4>
 					<div class="container">
-						<p class="text-info"><i class="fa fa-users"></i>Mercado Pago</p>
+						<!-- <p class="text-info"><i class="fa fa-users"></i>Mercado Pago</p> -->
 						<p class="text-primary"><i class="fa fa-paypal"></i>Paypal</p>
 					</div>
 					<p class="text-capitalize">
@@ -41,6 +41,7 @@
 								</a>
 							</small>
 							@include('preguntas.modal_preguntas')
+							@include('partials.modal_msj')
 							@include('cp.form',['producto' => $producto])
 						@endif
 					</p>

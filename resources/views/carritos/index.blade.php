@@ -35,7 +35,7 @@
 		                        </p>
 							</div>
 							<div class="col-sm-4 text-center div-separator-right div-separator-left">
-								<div class="form-group" align="center">
+								<!-- <div class="form-group" align="center">
 									<span class="col-sm-4"></span>
 									<span class="col-sm-4">
 										<select name="cantidad" class="form-control input-sm select_cantidad" onchange="multiplicar()">
@@ -46,7 +46,7 @@
 									</span>	
 									<span class="col-sm-4"></span>
 									<br>
-								</div>
+								</div> -->
 								<div class="col-sm-12">
 									<p class="h4">
 										<span class="text-danger" id="pecio_producto">{{ $producto->precio_bolivar }} BsF.</span>
@@ -65,11 +65,16 @@
 				</table>
 				<br>
 				<div class="col-sm-12 text-right div-footer-botonera">
-					<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
-					<button class="btn btn-primary btn-lg" id="btn_procesar_pago" type="button"><i class="fa fa-arrow-circle-right"> Procesar Pago</i></button>
-					<!-- <p class="text-capitalize text-primary">Total a cancelar</p>
-					<p>{{ $totalBSF }} BsF. <a href="" class="btn btn-danger disabled">Pagar</a></p>
-					<p>{{ $totalUSD }} USD. <a href="{{ url('/carrito/pago') }}" class="btn btn-primary">Pagar</a></p> -->
+					<!-- <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+					<button class="btn btn-primary btn-lg" id="btn_procesar_pago" type="button"><i class="fa fa-arrow-circle-right"> Procesar Pago</i></button> -->
+					<p class="text-capitalize text-primary">Total a cancelar</p>
+					<!-- <p>{{ $totalBSF }} BsF. <a href="" class="btn btn-danger disabled">Pagar</a></p> -->
+					<p>{{ $totalUSD }} USD.</p>
+					<p>
+						<a href="{{ url('/carrito/pago') }}" class="btn btn-primary btn-lg">
+							<i class="fa fa-paypal"> Pagar</i>
+						</a>
+					</p>
 				</div>
 		@else
 			<div class="col-sm-12">

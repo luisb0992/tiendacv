@@ -112,4 +112,31 @@
 			});
 			
 		});
+
+		$("#btn_agregar_pro").click(function(event) {
+			event.preventDefault();
+			var carrito = $("#span_carrito").text();
+			var btn = $("#btn_agregar_pro");
+			var producto = $("#input_producto_id").val();
+			var token = $('input[name="_token"]').val();
+			$.ajax({
+				headers: {'X-CSRF-TOKEN': token},
+				url: '../cp',
+				type: 'POST',
+				dataType: 'JSON',
+				data: {producto_id: producto},
+			})
+			.done(function() {
+				$("#span_carrito").text(parseInt(carrito) + parseInt(1));
+				// $("#modal_msj").show("slow/400/fast");
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+
+		});
 	});

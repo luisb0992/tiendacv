@@ -43,11 +43,9 @@ class ProductosCarritosController extends Controller
             'producto_id' => $request->producto_id,
         ]);
 
-        if ($response) {
-            \Session::flash('message', 'Agregado al carrito');
-            return redirect('carrito');
+        if ($request->ajax()) {
+            return response()->json($response);
         }else{
-            \Session::flash('error', 'Ooops ocurrio un error');
             return back();
         }
 
