@@ -43,6 +43,12 @@
 			    		{{ $total_respuestas->count() }}
 			    	</span>	
 		    		&nbsp;&nbsp;&nbsp; Respuestas 
+		    		@if($total_respuestas->count() > 0)
+						<button class="btn btn-link" type="button" data-toggle="modal" data-target="#respuestas">
+							<i class="fa fa-eye"></i>
+						</button>
+						@include('partials.modal_respuestas')
+		    		@endif
 		    	</div>
 		    @endif
 		    <hr>
