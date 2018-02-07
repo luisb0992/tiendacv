@@ -27,7 +27,6 @@ class EditProductoRequest extends FormRequest
             'titulo' => 'required|string|max:255|min:6',
             'categoria_id' => 'required',
             'descripcion' => 'string',
-            'precio_bolivar' => 'required',
             'precio_dolar' => 'required',
             'extension' => 'string',
         ];

@@ -40,7 +40,7 @@ class HomeController extends Controller
     }
 
     public function busqueda(Request $request){
-        $productos = Producto::where('titulo', 'like', '%' . $request->search . '%')->simplePaginate(15);
+        $productos = Producto::where('titulo', 'like', '%' . $request->search . '%')->simplePaginate(30);
         return view('productos.all',[
             'productos' => $productos,
             'palabra' => $request->search

@@ -32,10 +32,10 @@
 		                            </a>
 		                        </div>
 		                        <div class="col-sm-12 div-padding">
-		                            <p>
+		                            <!-- <p>
 		                                <span class="h4 text-danger">Bsf: 
 		                                {{ $producto->precio_bolivar }} </span>
-		                            </p>
+		                            </p> -->
 		                            <p>
 		                                <span class="h4 text-primary">USD: 
 		                                {{ $producto->precio_dolar }} </span>

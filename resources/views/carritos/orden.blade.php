@@ -9,7 +9,7 @@
 </div>
 <div class="container white">
 	<div class="div-padding">
-			<h3 class="bg-primary div-padding">Tu pago fue procesado con exito! <span class="text-morado">{{ $carrito->status }}</span></h3>
+			<h3 class="bg-primary div-padding">Tu pago fue procesado con exito! <span class="text-morado"></span></h3>
 			<p><span class="text-morado">Detalles de envio</span> <i class="fa fa-arrow-down text-primary"></i></p>
 			<div class="row div-padding">
 				<div class="col-sm-2">Correo: </div>

@@ -22,7 +22,7 @@
 						Precio
 					</h4>
 					<div class="container">
-						<p>{{ $producto->precio_bolivar }} <span class="text-danger">BsF</span></p>
+						<!-- <p>{{ $producto->precio_bolivar }} <span class="text-danger">BsF</span></p> -->
 						<p>{{ $producto->precio_dolar }} <span class="text-primary">USD</span></p>
 					</div>	
 					<h4 class="text-capitalize text-morado">metodos de pago</h4>

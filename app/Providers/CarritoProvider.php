@@ -19,7 +19,7 @@ class CarritoProvider extends ServiceProvider
 
             $user = Auth::check();
             
-            if ($user) {
+            if ($user && Auth::user()->perfil != 1) {
                 $carrito_id = \Session::get('carrito_id');
                 $carrito = Carrito::findOrCreateBySessionID($carrito_id);
                 // dd($carrito);

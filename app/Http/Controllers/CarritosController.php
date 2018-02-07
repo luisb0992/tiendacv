@@ -36,25 +36,23 @@ class CarritosController extends Controller
         $carrito = Carrito::findOrCreateBySessionID($carrito_id);
         $paypal = new Paypal($carrito);
 
-        // ids de los productos
-        $id = ProductoCarrito::where('carrito_id', $carrito->id)
-              ->get()
-              ->groupBy('producto_id'); 
-        // cantidad de productos en el carrito
-        $count_id = $id->count();
+        // // ids de los productos
+        // $id = ProductoCarrito::where('carrito_id', $carrito->id)
+        //       ->get()
+        //       ->groupBy('producto_id'); 
+        // // cantidad de productos en el carrito
+        // $count_id = $id->count();
 
-        $array = array();
-        foreach ($id as $idpro) {
-            $array [] = $idpro;
-        }  
-        dd($array, 'Productos en el carrito legalmente '.$count_id);
+        // $array = array();
+        // foreach ($id as $idpro) {
+        //     $array [] = $idpro;
+        // }  
+        // dd($array, 'Productos en el carrito legalmente '.$count_id);
 
-        // datos de los productos
-        $pro = Producto::whereIn('id', $id)->get();
+        // // datos de los productos
+        // $pro = Producto::whereIn('id', $id)->get();
 
         $pago = $paypal->generate();
-
-
         return redirect($pago->getApprovalLink());
     }
 

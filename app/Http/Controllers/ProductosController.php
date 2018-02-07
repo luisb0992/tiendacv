@@ -54,7 +54,7 @@ class ProductosController extends Controller
         $productos->categoria_id = $request->categoria_id;
         $productos->descripcion = $request->descripcion;
         $productos->cantidad = $request->cantidad;
-        $productos->precio_bolivar = $request->precio_bolivar;
+        $productos->precio_bolivar = 100;
         $productos->precio_dolar = $request->precio_dolar;
         //$productos->extension = $request->extension;
 

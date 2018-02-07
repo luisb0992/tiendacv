@@ -55,10 +55,10 @@
 			<h3>3 - Indica su valor</h3>
 		</div>
 		<div class="panel-body">		
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="precio_bolivar">Precio Bolivar (BsF)</label>
 				<input type="number" name="precio_bolivar" class="form-control" id="precio_bolivar" required autocomplete>
-			</div>
+			</div> -->
 			<div class="form-group">
 				<label for="precio_dolar">Precio Dolar (USD)</label>
 				<input type="number" name="precio_dolar" class="form-control" id="precio_dolar" required autocomplete>

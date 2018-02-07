@@ -59,10 +59,6 @@ class PagosController extends Controller
 
     public function procesarpago(Request $request)
     {
-        // $producto = array();
-        // foreach ($request->id_producto as $id) {
-        //     $producto [] = $id;
-        // }
         $carrito_id = \Session::get('carrito_id');
         $carrito = Carrito::findOrCreateBySessionID($carrito_id);
         $pc = ProductoCarrito::where('carrito_id', $carrito->id)->count();

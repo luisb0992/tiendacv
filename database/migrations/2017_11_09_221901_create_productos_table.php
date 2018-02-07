@@ -20,7 +20,7 @@ class CreateProductosTable extends Migration
             $table->integer('categoria_id')->unsigned();
             $table->integer('cantidad');
             $table->text('descripcion');
-            $table->decimal('precio_bolivar',12,2);//centavos
+            $table->decimal('precio_bolivar',12,2)->nullable();//centavos
             $table->decimal('precio_dolar',12,2);//centavos 
             $table->string('extension')->nullable();
 

@@ -17,34 +17,34 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth','admin']);
 
-Route::get('/carrito', 'CarritosController@index')->name('carrito')->middleware('auth');
+Route::get('/carrito', 'CarritosController@index')->name('carrito')->middleware(['auth','admin']);
 
-Route::get('/carrito/pago', 'CarritosController@pagar')->middleware('auth');
+Route::get('/carrito/pago', 'CarritosController@pagar')->middleware(['auth','admin']);
 
-Route::resource('tiendas', 'TiendasController',['middleware' => ['auth']]);
+Route::resource('tiendas', 'TiendasController',['middleware' => ['auth','admin']]);
 
-Route::resource('productos','ProductosController',['middleware' => ['auth']]);
+Route::resource('productos','ProductosController',['middleware' => ['auth','admin']]);
 
-Route::resource('cp','ProductosCarritosController',['middleware' => ['auth']]);
+Route::resource('cp','ProductosCarritosController',['middleware' => ['auth','admin']]);
 
-Route::resource('comentarios','ComentariosController',['middleware' => ['auth']]);
+Route::resource('comentarios','ComentariosController',['middleware' => ['auth','admin']]);
 
-Route::resource('preguntas','PreguntasController',['middleware' => ['auth']]);
+Route::resource('preguntas','PreguntasController',['middleware' => ['auth','admin']]);
 
-Route::get('/pagos','PagosController@store')->middleware('auth');
+Route::get('/pagos','PagosController@store')->middleware(['auth','admin']);
 
-Route::post('procesarpago','PagosController@procesarpago')->middleware('auth');
+Route::post('procesarpago','PagosController@procesarpago')->middleware(['auth','admin']);
 
-Route::post('busqueda','HomeController@busqueda')->middleware('auth');
+Route::post('busqueda','HomeController@busqueda')->middleware(['auth','admin']);
 
 Route::resource('compras','CarritosController',[
 	'only' => ['show'],
-	'middleware' => ['auth'],
+	'middleware' => ['auth','admin'],
 ]);
 
-Route::resource('ordenes','OrdenesController',['middleware' => ['auth']]);
+Route::resource('ordenes','OrdenesController',['middleware' => ['auth','admin']]);
 
 Route::get('productos/images/{filename}',function($filename){
 	// nos ubicamos en la ruta storage

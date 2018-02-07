@@ -49,9 +49,9 @@
 								</div> -->
 								<div class="col-sm-12">
 									<p class="h4">
-										<span class="text-danger" id="pecio_producto">{{ $producto->precio_bolivar }} BsF.</span>
+										<!-- <span class="text-danger" id="pecio_producto">{{ $producto->precio_bolivar }} BsF.</span>
 										<input type="hidden" class="precio_bolivar" value="{{ $producto->precio_bolivar }}">
-										<br>
+										<br> -->
 										<span class="text-primary">{{ $producto->precio_dolar }} USD.</span>
 										<input type="hidden" class="precio_dolar" value="{{ $producto->precio_dolar }}">
 									</p>
