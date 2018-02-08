@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Producto;
+use App\Tienda;
 use App\User;
 use App\Orden;
 use App\Pregunta;
@@ -24,8 +25,9 @@ class Admin
         if (Auth::user()->perfil == 1) {
 
             return response()->view('admin.index',[
-                 'users' => Producto::count(),   
-                 'productos' => User::count(),   
+                 'users' => User::count(),   
+                 'productos' => Producto::count(),   
+                 'tiendas' => Tienda::count(),   
                  'ordenes' => Orden::count(),  
                  'preguntas' => Pregunta::count(),  
                  'calificaciones' => Calificacion::count()  

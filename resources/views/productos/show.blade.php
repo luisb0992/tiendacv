@@ -69,11 +69,11 @@
 				<span style="color:#CACACA;">|</span> 
 				<!-- estructura para el comentario -->
 				@if($producto->user->id != Auth::user()->id)
-				<!-- <small>
+				<small>
 					<a href="#comentario" class="btn-link" data-toggle="modal" data-target="#comentario" role="button">
 						<i class="fa fa-plus-square"></i> Nuevo
 					</a>
-				</small> -->
+				</small>
 				@include('partials.reload')
 				@include('comentarios.modal_comentario')
 				@endif

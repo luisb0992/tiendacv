@@ -37,10 +37,12 @@
 			</div>
 			<hr>
 			<div class="text-center">
-				<!-- <a href="{{ url('/compras/'.$carrito->customid) }}" class="btn btn-lg btn-morado">Finalizar</a> -->
 				<a href="{{ url('/home') }}" class="btn btn-lg btn-primary">Volver al dashboard</a>
 			</div>
 		
 	</div>
 </div>
+@endsection
+@section('script')
+	<script src="{{ asset('js/show_producto.js') }}"></script>
 @endsection

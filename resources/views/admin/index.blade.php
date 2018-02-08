@@ -21,7 +21,7 @@
 				<br>
 				<span class="text-center border_bottom_blue h3">
 					<br>
-					{{ $usertienda }}
+					{{ $tiendas }}
 				</span>
 			</div>
 		</div>
